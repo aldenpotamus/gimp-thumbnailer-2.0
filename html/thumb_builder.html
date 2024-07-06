@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Data Display</title>
+    <style>
+        html {
+            scrollbar-gutter: stable;
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .select-title {
+            text-transform: capitalize;
+        }
+
+        .select-title > span {
+            font-size: x-large;
+            display: block;
+            width: 150px;
+        }
+
+        /* ALL */
+        .feature-container {
+            padding: 10px;
+            margin: 10px;
+            border-style: solid;
+        }
+
+        .feature-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .feature-section > input {
+            flex-grow: 1;
+        }
+
+        .feature-section > * {
+            padding-left: 10px;
+            padding-right: 10px;
+        } 
+
+        /* Multiple Select */
+        .feature-and-selection{
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .feature-and-button {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 50%;
+        }
+
+        .feature-and-button > button {
+            height: 100%;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 2em;
+        }
+
+        .selection-result-list {
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .selection-result-list > li {
+            margin: 3px;
+            border-radius: 15px;
+            background-color: #0f9300;
+            padding: 5px 5px 5px 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .selection-result-list > li > button {
+            color: #fff;
+            border: 1px solid #AEAEAE;
+            border-radius: 30px;
+            background: #605F61;
+            font-size: 29px;
+            font-weight: bold;
+            display: inline-block;
+            line-height: 0px;
+            padding: 11px 3px;   
+            margin-right: 7px;    
+        }
+
+        .selection-result-list > li > button:before {
+            content: "×";
+        }
+
+        .selection-result-list > li > span {
+            color:#000000;
+            font-weight: bolder;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<template id="text-single">
+    <div class="feature-container">
+        <div class="feature-section">
+            <div class="select-title"><span></span></div>
+            <input class="select-input" name="" />
+        </div>
+    </div>
+</template>
+
+<template id="text-many">
+    <div class="feature-container">
+        <div class="feature-and-selection">
+            <div class="feature-and-button">
+                <div class="feature-section">
+                    <div class="select-title"><span></span></div>
+                    <input class="select-input" list="" name="" />
+                </div>
+                <button>⇶</button>
+            </div>
+            <div class="selection-section">
+                <ul class="selection-result-list"></ul>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="dropdown-single">
+    <div class="feature-container">
+        <div class="feature-section">
+            <div class="select-title"><span></span></div>
+            <input class="select-input" list="" name="" />
+            <datalist class="select-datalist"></datalist>   
+        </div>
+    </div>
+</template>
+
+<template id="dropdown-many">
+    <div class="feature-container">
+        <div class="feature-and-selection">
+            <div class="feature-and-button">
+                <div class="feature-section">
+                    <div class="select-title"><span></span></div>
+                    <input class="select-input" list="" name="" />
+                    <datalist class="select-datalist"></datalist>
+                </div>
+                <button>⇶</button>
+            </div>
+            <div class="selection-section">
+                <ul class="selection-result-list"></ul>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    function nextInDOM(selector, currentElement) {
+        var nextElement= null;
+        var elements = document.querySelectorAll(selector);
+        for(var i = 0; i < elements.length; i++) {
+            if(elements[i] == currentElement && i+1 < elements.length) {
+                nextElement = elements[i+1];
+            }
+        }
+
+        if(!nextElement) {
+            for(var i = 0; i < elements.length; i++) {
+                if(elements[i].getAttribute('readonly') != 'readonly') {
+                    return elements[i];
+                }
+            }
+        }
+
+        return nextElement;
+    }
+
+    const dataContainer = document.getElementById('data-container');
+    var autoFillJSON = null;
+
+    function getElementIdFromId(id) {
+        return id.replaceAll(' ', '_')+'-selector';
+    }
+
+    function createListElementWithButtonFromValue(value, element) {
+        var li = document.createElement('li');
+        var textSpan = document.createElement('span');
+        textSpan.innerHTML = value;
+        var delButton = document.createElement('button');
+        delButton.addEventListener('click', function(event) {
+            event.target.closest('ul').removeChild(li);
+        });
+        li.appendChild(delButton);
+        li.appendChild(textSpan);
+        element.querySelector('ul').appendChild(li);
+    }
+
+    function createListElementWithButton(element) {
+        var input = element.querySelector('input');
+
+        if(!input.value) return;
+
+        if(element.getAttribute('max_vals') && 
+            element.childElementCount >= event.target.getAttribute('max_vals')) {
+            return;
+        }
+
+        if(event.target.getAttribute('regex_validate') && 
+            !input.value.match(event.target.getAttribute('regex_validate'))) {
+            return;
+        }
+
+        var li = document.createElement('li');
+        var textSpan = document.createElement('span');
+        textSpan.innerHTML = input.value;
+        var delButton = document.createElement('button');
+        delButton.addEventListener('click', function(event) {
+            event.target.closest('ul').removeChild(li);
+        });
+        li.appendChild(delButton);
+        li.appendChild(textSpan)
+        element.parentElement.querySelector('ul').appendChild(li);
+    }
+
+    function buildFeatureElement(id, templateName, options=null, constraint=null, regex=null) {
+        var singleSelectTemplate = document.getElementById(templateName)
+        var instance = singleSelectTemplate.content.cloneNode(true);
+        // console.log(instance);
+        instance.querySelector('.feature-container').id = getElementIdFromId(id);
+        instance.querySelector('.select-title > span').innerHTML = id;
+        
+        if(options) {
+            instance.querySelector('datalist').id = id+'-list';
+            var input = instance.querySelector('.select-input');
+            input.setAttribute('list', id+'-list');
+            input.addEventListener('focus', event => { event.target.value = ""; });
+            input.addEventListener('change', event => { event.target.blur(); });
+
+            var ul = instance.querySelector('ul');
+    
+            options.forEach(key => {
+                var option = document.createElement('option');
+                option.value  = key;
+                instance.querySelector('datalist').appendChild(option);
+            });
+        }
+
+        instance.querySelector('input')?.addEventListener('change', event => {
+            if(event.target.closest('.feature-and-button')) {
+                var listElement = createListElementWithButton(event.target.closest('.feature-and-button'))
+                input.value = '';
+            }
+        });
+
+        instance.querySelector('button')?.addEventListener('click', event => {
+            var listElement = createListElementWithButton(event.target.closest('.feature-and-button'))
+            input.value = '';
+        });
+
+        instance.querySelector('input')?.addEventListener('keypress', event => {
+            if (event.key === "Enter") {
+                createListElementWithButtonFromValue(event.target.value, event.target.closest('.feature-container'));
+                event.target.value = '';
+            }
+        });
+
+        instance.querySelector('input')?.addEventListener('keydown', event => {
+            if(event.which == 9) {
+                var found = false;
+
+                if(event.target.value != '') {
+                    event.preventDefault();
+                } else {
+                    console.log('time to change focus');
+                    var nextInput = nextInDOM('input', event.target);
+                    nextInput.focus();
+                    event.preventDefault();
+                    return;
+                }
+
+                if(event.target.closest('.feature-and-selection') && event.target.closest('.feature-and-selection').querySelector('.select-datalist')){
+                    Array.from(event.target.closest('.feature-and-selection').querySelector('.select-datalist').children).forEach(child => {
+                        var regex = event.target.value.split(' ').join('.*');
+                        if(child.value.match(regex) && !found) {
+                            input.value = child.value;
+                            var listElement = createListElementWithButton(event.target.closest('.feature-and-button'));
+                            input.value = '';
+                            found = true;
+                        }
+                    }); 
+                } else if(event.target.closest('.feature-section') && event.target.closest('.feature-section').querySelector('.select-datalist')) {
+                    Array.from(event.target.closest('.feature-section').querySelector('.select-datalist').children).forEach(child => {
+                        var regex = event.target.value.split(' ').join('.*');
+                        if(child.value.match(regex) && !found) {
+                            input.value = child.value;
+                            found = true;
+                        }
+                    });
+                    if(found) {
+                        var nextInput = nextInDOM('input', event.target);
+                        nextInput.focus();
+                    }                  
+                } else if(event.target.closest('.feature-container').querySelector('.select-datalist')) {
+                    createListElementWithButtonFromValue(event.target.value, event.target.closest('.feature-container'));
+                    event.target.value = '';
+                } else {
+                    var nextInput = nextInDOM('input', event.target);
+                    nextInput.focus();
+                }
+            }
+        });
+
+        if(constraint) instance.querySelector('button')?.setAttribute('max_vals', parseInt(constraint))
+        if(regex) instance.querySelector('button')?.setAttribute('regex_validate', regex)
+
+        return instance;
+    }
+
+    function buildFormUI(game, dataObject) {
+        var featuresElement = document.getElementById('features');
+        featuresElement.innerHTML = ''
+        if(dataObject[game]) {
+            var gameFeatures = dataObject[game]['features'];
+            Object.keys(gameFeatures).forEach(featureStr => {
+                var feature = gameFeatures[featureStr];
+                // console.log(featureStr+": "+feature['type']+"-"+feature['num_selections']);
+                var selectionMatches = /^([^[]*)(?:\[([^[]*)\])?$/.exec(feature['num_selections']);
+                var constraint = null;
+                                
+                if(selectionMatches[2]) {
+                    console.log('Constraint detected... limit '+featureStr+' to '+selectionMatches[2]);
+                    constraint = selectionMatches[2];
+                }
+
+                var template = feature['type']+'-'+selectionMatches[1];
+                if(document.getElementById(template)?.content) {
+                    var newFeature = buildFeatureElement(featureStr, template, options=feature['options'], constraint=constraint, regex=feature['option_validate']);
+                    featuresElement.appendChild(newFeature)
+                } else {
+                    console.log('Template not found for ['+template+']');
+                }
+                if(autoFillJSON) {
+                    autoFillJSON?.features[featureStr].forEach(valueToAdd => {
+                        var featureValueTarget = document.getElementById(getElementIdFromId(featureStr));
+                        if(featureValueTarget.querySelector('ul')) {
+                            createListElementWithButtonFromValue(valueToAdd, featureValueTarget);
+                        } else {
+                            featureValueTarget.querySelector('input').value = valueToAdd;
+                        }
+                    });
+                }
+            });
+
+            if(!document.getElementById('submit-button')) {
+                var submit = document.createElement('button');
+                submit.innerHTML = 'SUBMIT';
+                submit.id = 'submit-button';
+                submit.addEventListener('click', event => {
+                    extractFormResponses();
+                });
+    
+                featuresElement.parentElement.appendChild(submit);
+            }
+        }
+    }
+
+    function extractFormResponses() {
+        var submissionResult = {
+            "videoid": document.getElementById('videoid-selector').querySelector('input').value,
+            "game": document.getElementById('game-selector').querySelector('input').value,
+            "ep_number": "${ep_number}",
+            "ep_sub_text": "${ep_sub_text}",
+            "features": {
+            }
+        }
+
+        Array.from(document.getElementById('features').children).forEach(child => {
+            var featureName = child.querySelector('span').textContent;
+            var input = child.querySelector('input');
+            var ul = child.querySelector('ul');
+            if(ul) {
+                submissionResult["features"][featureName] = []
+                Array.from(ul.children).forEach(c => {
+                    submissionResult["features"][featureName].push(c.querySelector('span').textContent);
+                })
+            } else if (input) {
+                submissionResult["features"][featureName] = [input.value]
+            }
+        });
+
+        var destUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfjcgs30O_H1bOCjd-rgeBLCM72DMAa7sNHzVVFmwBvLJ4IIw/viewform?usp=pp_url&entry.2037368357=videoid&entry.1944317321='
+        var fullURL = destUrl+JSON.stringify(submissionResult);
+        window.open(fullURL, '_blank').focus();
+    }
+
+    fetch('https://raw.githubusercontent.com/aldenpotamus/gimp-thumbnailer-2.0/main/json.gen/merged.json')
+    // fetch('../json.gen/merged.json')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        autoFillJSON = JSON.parse(urlParams.get('fill'));
+
+        var videoIdSelector = buildFeatureElement('videoid', 'text-single');
+        videoIdSelector.id = 'video-selector'
+        videoIdSelector.querySelector('input').value =  urlParams.get('videoid');
+        if(urlParams.get('videoid'))
+            videoIdSelector.querySelector('input').setAttribute('readonly', 'readonly');
+        document.getElementById('form-elements').appendChild(videoIdSelector);
+
+        var gameSelector = buildFeatureElement('game', 'dropdown-single', options=Object.keys(data));
+        gameSelector.id = 'game-selector';
+        gameSelector.querySelector('input').addEventListener('change', event => {
+            buildFormUI(event.target.value, data);
+        });
+        document.getElementById('form-elements').appendChild(gameSelector);
+
+        var features = document.createElement('div');
+        features.id = 'features';
+        document.getElementById('form-elements').appendChild(features);
+
+        if(autoFillJSON && autoFillJSON['game']) {
+            document.getElementById('game-selector').querySelector('input').value = autoFillJSON['game'];
+            document.getElementById('game-selector').querySelector('input').dispatchEvent(new Event('change'));
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        dataContainer.textContent = 'Error loading data.';
+      });
+</script>
+<body>
+    <h1>Build a Thumbnail</h1>
+    <div id="form-elements">
+    </div>
+</body>
+</html>

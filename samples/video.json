@@ -1,0 +1,14 @@
+{
+    "videoid": "abcdefg",
+    "game": "the last spell",
+    "ep_number": "174",
+    "ep_sub_text": "night<br>8",
+    "features": {
+        "logo": ["any"],
+        "apoc level": ["5"],
+        "map": ["runenberg"],
+        "omen": ["siege", "engineer", "advanced training", "dexterity", "celerity"],
+        "gear": ["cannon", "spear", "wand", "dagger", "long bow"],
+        "enemy": ["ghost", "harpling", "tanky", "boomer"]
+    }
+}

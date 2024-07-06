@@ -1,0 +1,351 @@
+{
+    "balatro": {
+        "features": {
+            "description": {
+                "type": "text",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "option_validate": "^.{0,255}$"
+            },
+            "success": {
+                "type": "dropdown",
+                "options": ["win", "loss", "win (close)", "loss (close)", "rage quit"],
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "card": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["planet ceres", "planet earth", "planet eris", "planet jupiter", "planet mars", "planet mercury", "planet neptune", "planet pluto", "planet saturn", "planet uranus", "planet venus", "planet x", "spectral ankh", "spectral aura", "spectral black hole", "spectral cryptid", "spectral deja vu", "spectral ectoplasm", "spectral familiar", "spectral grim", "spectral hex", "spectral immolate", "spectral incantation", "spectral medium", "spectral ouija", "spectral sigil", "spectral soul", "spectral talisman", "spectral trance", "spectral wraith", "tarot chariot", "tarot death", "tarot devil", "tarot emperor", "tarot empress", "tarot fool", "tarot hangedman", "tarot hermit", "tarot hierophant", "tarot high priestess", "tarot judgement", "tarot justice", "tarot lovers", "tarot magician", "tarot moon", "tarot star", "tarot strength", "tarot sun", "tarot temperance", "tarot tower", "tarot wheel", "tarot world"]
+            },
+            "deck": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["abandoned", "anaglyph", "black", "blue", "braided", "challenge", "checkered", "erratic", "foil", "ghost", "green", "holographic", "magic", "nebula", "painted", "planet mercury", "plasma", "polychrome", "red", "silver", "yellow", "zodiac"]
+            },
+            "stake": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["black", "blue", "gold", "green", "orange", "purple", "red", "white"]
+            },
+            "joker": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["8 ball", "abstract joker", "acrobat", "ancient joker", "arrowhead", "astronomer", "banner", "baron", "baseball card", "blackboard", "bloodstone", "blue joker", "blueprint", "bootstraps", "brainstorm", "bull", "burglar", "burnt joker", "business card", "campfire", "canio", "card sharp", "cartomancer", "castle", "cavendish", "ceremonial dagger", "certificate", "chaos the clown", "chicot", "clever joker", "cloud", "constellation", "crafty joker", "crazy joker", "credit card", "delayed gratification", "devious joker", "diet cola", "dna", "droll joker", "drunkard", "dusk", "egg", "erosion", "even steven", "faceless joker", "fibonacci", "flash card", "flower pot", "fortune teller", "four fingers", "gift card", "glass joker", "gluttonous joker", "golden joker", "golden ticket", "greedy joker", "green joker", "gros michel", "hack", "half joker", "hallucination", "hanging chad", "hiker", "hit the road", "hologram", "ice cream", "invisible joker", "joker", "joker stencil", "jolly joker", "juggler", "loyalty card", "luchador", "lucky cat", "lusty joker", "mad joker", "madness", "mail-in rebate", "marble joker", "matador", "merry andy", "midas mask", "mime", "misprint", "mr. bones", "mystic summit", "obelisk", "odd todd", "onyx agate", "oops alles", "pareidolia", "perkeo", "photograph", "popcorn", "raised fist", "ramen", "red card", "reserved parking", "ride the bus", "riff-raff", "rocket", "rough gem", "runner", "satellite", "scary face", "scholar", "seeing double", "seltzer", "shoot the moon", "shortcut", "showman", "sixth sense", "sly joker", "smeared joker", "smiley face", "sock and buskin", "space joker", "spare trousers", "splash", "square joker", "steel joker", "stone joker", "stuntman", "supernova", "superposition", "swashbuckler", "the duo", "the family", "the idol", "the order", "the tribe", "the trio", "throwback", "to do list", "to the moon", "trading card", "triboulet", "troubadour", "turtle bean", "vagabond", "vampire", "walkie talkie", "wee joker", "wily joker", "wrathful joker", "yorick", "zany joker"]
+            }
+        }
+    },
+    "darkest dungeon ii": {
+        "features": {
+            "description": {
+                "type": "text",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "option_validate": "^.{0,255}$"
+            },
+            "success": {
+                "type": "dropdown",
+                "options": ["win", "loss", "win (close)", "loss (close)", "rage quit"],
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "region": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["foetor", "mountain", "shroud", "sluice", "sprawl", "tangle"]
+            },
+            "heros": {
+                "type": "dropdown",
+                "num_selections": "many[4]",
+                "options_limit": "strict"
+            },
+            "pet": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["crimson tick", "hatchling crocodilian", "larval carrion eater", "mucilaginous slime", "orphan wolf cub", "pygmy pliskin", "reanimated rabbit", "shambler's spawn", "shrieker chick", "unnatural owlet"]
+            },
+            "flame": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["bastard's beacon", "corpse light", "killer's glow", "stygian blaze", "the start of the chosen"]
+            },
+            "boss": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": []
+            },
+            "enemy": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["sprawl-*", "sluice-*", "tangle-*", "foetor-*", "shroud-*"]
+            },
+            "trinket": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": []
+            },
+            "consumable": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": []
+            }
+        }
+    },
+    "the last spell": {
+        "features": {
+            "description": {
+                "type": "text",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "option_validate": "^.{0,255}$"
+            },
+            "success": {
+                "type": "dropdown",
+                "options": ["win", "loss", "win (close)", "loss (close)", "rage quit"],
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "map": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["elderlicht", "gildenberg", "glenwald", "glintfein", "lakeburg", "runenberg"]
+            },
+            "omen": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["advanced training", "agility", "bargaining", "boundless reinforcements", "bursting flesh", "celerity", "clear sky", "countless paths", "craftsmanship", "cripling punch", "default", "dexterity", "discounts", "engineer", "fierceness", "focus", "fortifications", "fortress", "great fortune", "growth", "housing", "leapfrog", "lone scavenger", "magic orbs", "many axes", "many cannons", "many crossbows", "many daggers", "many druidic staffs", "many gauntlets", "many great axes", "many hammers", "many hand crossbows", "many longbows", "many pistols", "many power staffs", "many rifles", "many scepters", "many shortbows", "many sledgehammers", "many spears", "many swords", "many tomes of secrets", "many two-handed swords", "many wands", "many war shields", "mercenary", "mysticism", "opportunities", "outpost", "overload", "patience", "pickiness", "potion throw", "quality", "rarity", "reach", "readiness", "rejuvination", "resilience", "sadism", "savings", "scavenging", "second chance", "separation", "siege", "softening", "steel", "sturdiness", "supplies", "swiftness", "tainted bloom", "tainted harvest", "talent", "trap efficiency", "trapper", "vigor", "violence", "vitality", "vulture", "wanderer", "weakened horde", "wealth", "wisdom"]
+            },
+            "gear": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["axe", "cannon", "dagger", "druidic staff", "gauntlet", "great axe", "hammer", "hand crossbow ", "long bow", "magic scepter ", "magicorb", "magicstaff", "pistol", "rifle", "shield", "shortbow", "sledgehammer", "spear", "sword", "tome of magic", "wand", "war shield"]
+            },
+            "enemy": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["accursed", "accursed-elite", "archer", "archer-elite", "armored", "blocker", "blocker-elite", "boomer", "boomer-elite", "bulkie", "bulkie-elite", "clawer", "clawer-elite", "crawler", "crawler-elite", "dodger", "dodgyclawer-elite", "green-armored", "guardian", "guardian-elite", "harpling", "hopper", "hopper-elite", "hunter", "hunter-elite", "kindled", "lancer", "lancer-elite", "nessie egg", "nessie offspring", "ripper", "ripper-elite", "runner", "runner #1", "runner-elite", "spawner", "splitter", "splitter-elite", "twisted", "twisted-elite", "winged", "winged-elite"]
+            },
+            "apoc level": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["1", "2", "3", "4", "5", "6", "normal"]
+            },
+            "perk": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["adrenaline rush", "against the wall", "aggressiveness", "avid learner", "back protection", "berserk", "big game hunter", "blessing", "blink", "blood collector", "blood magic", "blood shield", "bloodthirst", "bodybuilder", "bodycount contest", "boom", "bully", "carnage", "cheer", "cherry picking", "coagulation", "collateral damage", "contamination", "critical carvings", "critical master", "critical runes", "death prevention", "defensive training", "dont panic", "dont you dare moving", "duelist", "earthquake strike", "emergency tunnel", "energized", "epidemic", "explosive atoms", "explosive hemoglobin", "f you in particular", "fast toxins", "fatality", "fear of death", "field study", "first blood", "flexibility", "forge mastery", "fortress master", "geo reservoir", "glass cannon", "hard as a rock", "harvester", "head on", "heart of the party", "hex", "human ballista", "inertia", "initiator", "jolly drinker", "leapfrog", "legendary assassin", "like a shark", "lone wolf", "longer weapons", "look at my muscles", "magic fuel", "mana collector", "mana growth", "mana shield", "martial punch", "mood swings", "night owl", "nimble", "organic armor", "overheat", "overload", "perfect guard", "perseverance", "poisonous", "potion throw", "proximity shot", "quantity vs quality", "quick reload", "raging sorcery", "relentless", "resupply", "retain ap move", "runic gift", "sadist", "sanguine fuel", "selfcare", "septic shock", "sheer power", "shorter weapons", "shower of blows", "smiths anvil", "specialist", "spiky skin", "spotter", "sprint", "steady aim", "stoneheart shield", "stunning", "surgical strike", "thickness", "third eye", "thrifty", "toss me", "toss me away", "toxic leech", "vampire", "versatility", "vivified", "volatile reaction", "warcry", "weakness finder", "youre next"]
+            },
+            "hero name": {
+                "type": "text",
+                "num_selections": "many[6]",
+                "options_limit": "strict",
+                "option_validate": "^.{0,15}$"
+            }
+        }
+    },
+    "spellrogue": {
+        "features": {
+            "description": {
+                "type": "text",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "option_validate": "^.{0,255}$"
+            },
+            "success": {
+                "type": "dropdown",
+                "options": ["win", "loss", "win (close)", "loss (close)", "rage quit"],
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "act": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["act-1", "act-2", "act-3"]
+            },
+            "hero": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["azar", "hazel", "lapis"]
+            },
+            "spell": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["ashen plating", "blaze", "blinding brilliance", "blood vortex", "bloodward", "bombard", "brimstone", "burn scar", "burning both ends", "cauterize", "channel mana", "chaos bolts", "charcoal backdraft", "charcoal dagger", "cinder swipe", "combustion", "conflagration", "convalesce", "crescendo", "dawn dome", "demean", "detonation", "eruption", "extract", "falling fire", "fickle barrier", "fireball", "flame hunger", "flame storm", "flame surge", "focused heat", "fragmentize", "furnace", "gathering flames", "glowing visage", "heatstroke", "heatwave", "hemorrhage", "hurt", "incandescence", "incendiary", "incinerate", "inferno", "infused shield", "inner rage", "ironguard", "kairotic moment", "kindle", "leech", "luminance", "magma skin", "mana purification", "mana splinter", "meteor", "mutilation", "nourish flames", "phlogiston", "phoenix blast", "pyre", "reclamation", "roaring embers", "sacrifice", "sap lifeforce", "searing heat", "sharp spark", "sunshield", "superheat", "suspension", "vigor of blood", "vindictive strike", "volcanic power", "wildblaze orb", "wildfire explosions", "zeal of the sun"]
+            },
+            "ritual": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["arcane infusion", "astral attunement", "blood totem", "bloodbound skin", "flux reversal", "fortune's favor", "lathspell ritual", "lifelock", "manifold gatestone", "odd cascade", "red candle", "sapling's sphere", "soul grasp", "spell catalyst", "spellbound chorus", "spellbreaker shade"]
+            },
+            "artifact": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["amulet of sacrifice", "annulets", "arctic axe", "astral visor", "balanced manapearl", "bittertooth", "bosco's bell", "bottle of fire", "bowl of holy water", "chaos crystal", "charged necklace", "coral crown", "crooked dice", "crucible", "crystal heart", "cube of darkness", "cursed pendant", "damned shield", "darkheart", "darkwraith scythe", "deathmask", "demonic seal", "desecrator's mark", "devoted", "diadem of power", "dilapidated crown", "dimensional cube", "dreadstone", "dwarven tankard", "emberstone ring", "enchanted cloak", "enchanting effigy", "erratic eye amulet", "etherweave", "everguard", "exuberant wand", "faerie's curse", "finger of justice", "flame brand", "fool's hope charm", "frostveil", "gaia's grasp", "ghost charm", "giant's pouch", "gilded dowsing rod", "glacier's heart", "golden bracelet", "granite orb", "greenbeard helmet", "guiding eye", "hammer of mana", "heavenly acorn", "helmet of composure", "hex robes", "hexed crown", "horn of virtue", "hymn book", "illumine necklace", "inner sun", "karl's memory", "ley line focus", "life-skein", "lifeblood vessel", "lifedrinker", "light's lantern", "lodestone lens", "m'olly", "mystic hammer", "ocean's oath", "overcharge crystal", "phoenix pendant", "plague pestle", "poison core", "portentum", "prejudice", "protecting sproutling", "protective feather", "rabbit's foot", "rage blade", "red dawn", "red minerals", "ring of block", "ring of poison", "rod of resurgence", "runic infuser", "seashell wand", "sentinel sigil", "shimmering totem", "shrunken manastone", "sight shield", "silver hauberk", "skaal", "skjoldur", "smoldering torch", "spirit of swiftness", "staff of lightning", "staff of protection", "staff of splintering", "stoneforged greaves", "stoneheart amulet", "storm in a bottle", "stupifying stone", "sunweave cloak", "sword of frailty", "sword of pain", "tablet of anger", "talisman of suspension", "temporal plate", "tempus", "thorned pendant", "tidal talisman", "trapped spellwind", "trinity statuette", "twisted scimitar", "unstable manacore", "vengeful dagger", "voidburn censer", "vortex crystal", "wheel of vigour", "witch blood", "wolf claw", "wrathstone"]
+            },
+            "status": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["berserker", "brilliance", "broken", "buried", "corruption", "crone eye", "darkness", "decay", "delicate", "depleting presence", "dice trap", "enraged", "frenzy", "fungus armor", "grow armor fruit", "grow bomb fruit", "grow corruption fruit", "grow shambler", "guard", "hellfire", "ignite", "illusionary", "immolate", "imp mark", "imp power", "infected", "instability", "intensify", "invulnerable", "invulnerable", "lifebond", "mana hunger", "nullify", "ooze split", "power aura", "power trap", "regenerating heads", "repulsion", "reshape", "rupture trap", "sanguine", "shade armor", "silence trap", "silenced", "snare", "soul detonation", "spell mirror", "stun", "summon", "suppress", "unstable", "vexed", "weakness aura"]
+            },
+            "die_type": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["blood", "energized", "ether", "glimmer", "icy", "lathspell", "manifold", "sapling", "silence", "stygian", "vex", "wound"]
+            },
+            "potion": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["azur potion", "berserk potion", "blast pot", "branding tonic", "burning vial", "cloudburst nectar", "crystal snort", "energizing potion", "faerie essence", "flask of echoes", "flowing mana", "frenzy potion", "holy water", "ironskin potion", "phoenix pearls", "plurality philter", "potion of divination", "presence of mind", "regeneration vial", "sacred herb tea", "shadepower vial", "smoke screen", "soothing solution", "spike seed", "split potion", "toxic vial", "vampire essence", "volatile concoction", "weakness gas"]
+            },
+            "enemy": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["act 1 - *", "act 2 - *", "act 3 - *", "abyss walker (act 3 - normal)", "arkanax (act 3 - boss)", "barbed grub (act 2 - normal)", "black hydra head (act 2 - summon)", "blue hydra head (act 2 - summon)", "burning treant (act 1 - normal)", "burning treant (act 2 - normal)", "carrion abomination (act 1 - elite)", "chaos angel (act 3 - elite)", "corrupt abbot (act 1 - elite)", "corrupt brute (act 1 - normal)", "corrupt defender (act 1 - normal)", "corrupt friar (act 1 - normal)", "corrupt ravager (act 1 - normal)", "cosmic spirit (act 3 - normal)", "crone of birth (act 2 - elite)", "crone of death (act 2 - elite)", "crone of growth (act 2 - elite)", "dark reflection (act 3 - summon)", "decay faerie (act 1 - normal)", "desert golem (act 2 - normal)", "desert spirit (act 2 - normal)", "devil assassin (act 2 - elite)", "devil spellcaster (act 2 - normal)", "djinn (act 2 - elite)", "door to beyond (act 3 - normal)", "dread treant (act 1 - normal)", "dreamweaver (act 3 - elite)", "faerie guardian (act 1 - normal)", "fierce voidling (act 3 - normal)", "fierce voidling (act 3 - summon)", "ghost light (act 1 - summon)", "golem (act 1 - normal)", "green hydra head (act 2 - summon)", "guardian voidling (act 3 - normal)", "heart of the forest (act 1 - boss)", "hydra body (act 2 - boss)", "imp fanatic (act 2 - normal)", "imp fanatic (act 3 - normal)", "imp hatchling (act 2 - normal)", "imp raider (act 2 - normal)", "imp warrior (act 2 - normal)", "instability (act 3 - summon)", "lesser shambler (act 1 - normal)", "lesser shambler (act 1 - summon)", "living embers (act 1 - normal)", "living embers (act 2 - normal)", "magma son (act 1 - summon)", "magus (act 2 - normal)", "major void ooze (act 3 - normal)", "mana devourer (act 3 - normal)", "minor void ooze (act 3 - normal)", "minor void ooze (act 3 - split)", "monstrosity (act 3 - reshape)", "mother of flames (act 1 - boss)", "orb of infinity (act 3 - elite)", "plated grub (act 2 - normal)", "primordial blaze (act 1 - elite)", "pylon of enfeeblement (act 3 - normal)", "pylon of might (act 3 - normal)", "red hydra head (act 2 - summon)", "root of the forest (act 1 - summon)", "shadowfire twin (act 2 - boss)", "shambler (act 1 - normal)", "spine fiend (act 1 - normal)", "spitting grub (act 2 - normal)", "toxic ooze (act 1 - summon)", "void ooze (act 3 - normal)", "void ooze (act 3 - split)", "warlock (act 2 - normal)", "warlock (act 3 - normal)", "will-o'-wisp (act 1 - normal)", "wrath voidling (act 3 - normal)", "wrath voidling (act 3 - summon)"]
+            }
+        }
+    },
+    "hexguardian": {
+        "features": {
+            "description": {
+                "type": "text",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "option_validate": "^.{0,255}$"
+            },
+            "success": {
+                "type": "dropdown",
+                "options": ["win", "loss", "win (close)", "loss (close)", "rage quit"],
+                "num_selections": "single",
+                "options_limit": "strict"
+            }
+        }
+    },
+    "ring of pain": {
+        "features": {
+            "description": {
+                "type": "text",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "option_validate": "^.{0,255}$"
+            },
+            "success": {
+                "type": "dropdown",
+                "options": ["win", "loss", "win (close)", "loss (close)", "rage quit"],
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "candle": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["candle", "candle doused", "dark stone", "double candle", "glowstone", "inverted candle", "lantern of the ox", "pain", "selective stone"]
+            },
+            "item": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["arms - brewers gloves", "arms - buckler", "arms - cold blooded", "arms - deflection", "arms - dual wield", "arms - first strike", "arms - grabby hands", "arms - hagglers gloves", "arms - hand of dog", "arms - nightshade wrap", "arms - noxious ambience", "arms - noxious grasp", "arms - pains reward", "arms - parting gift", "arms - phase friend", "arms - powerglove", "arms - quick draw gloves", "arms - setting grasp", "arms - shadow flight", "arms - soul stealer", "arms - tiny hands", "arms - touch of decay", "arms - vine grip gloves", "body - amorphous mass", "body - chained iron", "body - chestplate", "body - conduit", "body - dark leather", "body - dashers cloak", "body - devourer", "body - extra onion suit", "body - feathered friend", "body - fur coat", "body - gilded chestplate", "body - gluttony", "body - gripping mantle", "body - immovable object", "body - juggernaut", "body - living corset", "body - molten", "body - onion suit", "body - porous shell", "body - possessed robe", "body - ritual garment", "body - scale top", "body - shrouded leather", "body - spine suit", "body - stacked plate", "body - summoned robe", "body - vitality robes", "charm - berzerker relic", "charm - blood ritual", "charm - bronze leaf", "charm - chaos flower", "charm - corruption", "charm - endurance", "charm - feinting token", "charm - ferocity", "charm - fire frenzy", "charm - friend of frog", "charm - friend of frog #1", "charm - gamblers reward", "charm - generosity", "charm - insanity stone", "charm - instability", "charm - solidarity", "charm - time rift -", "charm - tipping point", "charm - unstable fragments", "charm - vaulter", "charm - visionary", "charm - volcanic", "feet - agile boots", "feet - ascension petrify", "feet - ascension thunderstep", "feet - boots", "feet - bounty", "feet - charming claws", "feet - freezing aura", "feet - giants wrap", "feet - heavy boots", "feet - insidious", "feet - leaping boots", "feet - lucidity", "feet - lucky shoes", "feet - mistwalker", "feet - phase boots", "feet - rainbow socks", "feet - sandals", "feet - slippers", "feet - sneaky", "feet - soul raiser", "feet - thunderstep", "feet - vine grip shoes", "feet - wanderer", "gem - attack drain leech", "gem - black opal", "gem - bloodstone", "gem - bright jewel", "gem - chilled crystal", "gem - chrysalis heart", "gem - crystalline", "gem - defense drain", "gem - evasive", "gem - furystone", "gem - grim seal", "gem - light blood", "gem - light bringer", "gem - nefarious", "gem - oil", "gem - opalescence", "gem - phoenix gift", "gem - poltergeist", "gem - precious", "gem - reapers heart", "gem - shifting shape devolve", "gem - sightsphere", "gem - slippery", "gem - soul glass", "gem - speed drain", "gem - spell gem", "gem - stone caller", "gem - swamp matter", "gem - thief bind", "gem - thunder egg", "gem - tigerstone", "gem - titanium", "gem - toxic lump", "gem - void", "head - agile cap", "head - bandana", "head - berzerker", "head - blindfold", "head - brittle wreath", "head - carapce", "head - changeling crown", "head - chaos underwear", "head - cover of darkness", "head - crown of clarity", "head - cryokinesis", "head - dealers hood", "head - focus", "head - helmet", "head - hermits tiara", "head - hood", "head - iron grinder", "head - living helmet", "head - neuron sight", "head - poison fiend", "head - scavenger", "head - skullcap", "head - strikers veil", "head - tiny crown", "head - void portal", "leg - fancy tights", "legs  impactful", "legs - alchemy belt", "legs - bindings", "legs - changelings waist armor", "legs - channelling kilt", "legs - fire dance", "legs - ghostly", "legs - grounded crit", "legs - guards", "legs - hermits pockets", "legs - jousting pants", "legs - pants dark", "legs - sacrificial cloth", "legs - shorts", "legs - skirt", "legs - spiked", "legs - spirit walker", "legs - tainted belt", "legs - trapping tools", "legs - versatile", "legs - wading rags", "legs - warrior kilt", "mask - betrayal", "mask - camouflage", "mask - chugging", "mask - chugging mask", "mask - collectors disguise", "mask - consumption", "mask - dark pact symbiot", "mask - eruption", "mask - false confidence", "mask - flame eater", "mask - frostbite", "mask - generalist", "mask - insatiable", "mask - inward pain", "mask - maskof crow", "mask - masochist", "mask - merchant", "mask - mimic friend", "mask - nightmare walker", "mask - precision", "mask - ravenous", "mask - sadistic will", "mask - sculptor", "mask - seeing double", "mask - slow burn candle weak monsters", "mask - spiritual", "mask - weightless", "necklace - ankh resurrect", "necklace - choker", "necklace - collateral damage", "necklace - creeping roots", "necklace - crossed heart", "necklace - gem", "necklace - haunted", "necklace - hungry sun", "necklace - infected necklace", "necklace - momentum", "necklace - multiclass gambit", "necklace - pearls", "necklace - positivity", "necklace - potion vial", "necklace - potion vial empty", "necklace - prismic", "necklace - ritual torc", "necklace - smoke", "necklace - soul stitch", "necklace - stealth", "necklace - supplement", "necklace - trophy intimidate", "necklace - turbulence", "off hand - venom guard", "offhand - battering shield", "offhand - bolster", "offhand - cursed ambiguous map", "offhand - dark aura", "offhand - flail", "offhand - giants club", "offhand - glacier", "offhand - glass shield", "offhand - goblet", "offhand - heat shield charged", "offhand - heat shield used", "offhand - hunters formula", "offhand - immolation", "offhand - mimicry", "offhand - misting vessel -", "offhand - parrying shield", "offhand - poison shield", "offhand - purity", "offhand - shovel", "offhand - soul charger", "offhand - soul extractor", "offhand - spiked shield", "offhand - strongest potion", "offhand - tome of stillness -", "offhand - toxins", "offhand - unstable tome", "scroll - banish", "scroll - barrier", "scroll - bear trap", "scroll - blizzard", "scroll - bombard", "scroll - chaotic healing", "scroll - corruption", "scroll - cover darkness", "scroll - create exit", "scroll - crushing dash", "scroll - cursed bounty", "scroll - decoy", "scroll - detonate", "scroll - ensnare", "scroll - explosive", "scroll - final form", "scroll - forceful", "scroll - freeze", "scroll - frog", "scroll - heal", "scroll - heart power", "scroll - hello friend", "scroll - hex", "scroll - key", "scroll - overgrowth", "scroll - pierce", "scroll - replenish", "scroll - shadow step", "scroll - siphon gem", "scroll - soul cannon", "scroll - soul craft", "scroll - soul spill", "scroll - stone skin", "scroll - suffocation", "scroll - summon nestling", "scroll - timeless", "scroll - transcendence", "scroll - upgrade", "scroll - weaken", "scrolls - frog ritual", "scrolls - pet rock", "scrolls - rock", "scrolls - salvage", "scrolls - shadowstrike", "scrolls - soul feed", "scrolls - touch of chaos", "spell books - absorb", "spell books - blackhole", "spell books - chaotic healing", "spell books - charging soul", "spell books - cure", "spell books - echo", "spell books - empty", "spell books - enrage", "spell books - ensnare", "spell books - exit phase", "spell books - forceful", "spell books - frostroot", "spell books - icy touch", "spell books - life store", "spell books - perilous intent", "spell books - plague", "spell books - poison", "spell books - poison droplet", "spell books - poison transfer", "spell books - potion bank", "spell books - shatter", "spell books - shields up", "spell books - shuffle", "spell books - siphon gem", "spell books - soul cannon", "spell books - soulscream", "spell books - stonescream", "spell books - suffocation", "spell books - switch", "spell books - timeless", "spellbook - feed", "spellbook - fencer", "spellbook - mindflay", "stuff - fork", "stuff - hair", "stuff - knife", "stuff - lint", "stuff - sand", "stuff - worm friend", "trinket - backpack", "trinket - bag of holding", "trinket - bowl of soup", "trinket - catalyst1", "trinket - catalyst2", "trinket - catalyst3", "trinket - clarity eyes1", "trinket - clarity eyes2", "trinket - clarity eyes3", "trinket - creepier doll", "trinket - creepy doll", "trinket - decanter", "trinket - dissipating mist", "trinket - empty jar", "trinket - fairy", "trinket - get frogged1", "trinket - get frogged2", "trinket - get frogged3", "trinket - get frogged4", "trinket - ginseng1", "trinket - ginseng2", "trinket - ginseng3", "trinket - light concoction", "trinket - memoir", "trinket - mushrooms1", "trinket - mushrooms2", "trinket - mushrooms3", "trinket - parallel mirror", "trinket - restrained heart", "trinket - slime cells1", "trinket - slime cells2", "trinket - slime cells3", "trinket - soul hourglass", "trinket - strength beans1", "trinket - strength beans2", "trinket - strength beans3", "trinket - volatile crystals1", "trinket - volatile crystals2", "trinket - volatile crystals3", "trinket - warmonger"]
+            },
+            "monster": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["attention seeking", "big dog", "boss dog", "boss dog nice", "composure connection", "compulsion", "confidence", "constriction", "crawler", "delusion", "dog nice", "doubt", "exploder", "flailing mound", "floppy", "hatchling bird", "ice beast", "loot paranoia", "owl", "poison corpse", "quiet calm meditation", "rage contagion", "self discipline", "shackles blocker small", "shooter", "skittering fright", "spikebud", "spikebud big", "spikebud sharp", "statue", "stilts", "stilts big", "time lord", "vision"]
+            }
+        }
+    },
+    "rogue voltage": {
+        "features": {
+            "description": {
+                "type": "text",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "option_validate": "^.{0,255}$"
+            },
+            "success": {
+                "type": "dropdown",
+                "options": ["win", "loss", "win (close)", "loss (close)", "rage quit"],
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "area": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["bogmarsh", "caves", "tutorial", "volcano"]
+            }
+        }
+    },
+    "dungeon clawler": {
+        "features": {
+            "description": {
+                "type": "text",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "option_validate": "^.{0,255}$"
+            },
+            "success": {
+                "type": "dropdown",
+                "options": ["win", "loss", "win (close)", "loss (close)", "rage quit"],
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "hero": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["bennybeaver", "bernie", "countclawcula", "dolly", "felina", "scrappy", "sirbunalot"]
+            },
+            "item": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["antidote", "battleaxe", "bigshield", "bodyarmor", "bomb", "brassknuckle", "broadsword", "cactus", "coin test", "creditcard", "dagger", "darksword", "double bladed sword", "gasgrenade", "gauntlet", "golddagger", "hand of midas", "handmirror", "healingflask", "heatgun", "helmet", "holyshield", "keychain magnet", "laserpointer", "lavabathbomb", "luckystick", "magicwand", "metalshield", "morningstar", "piggybank", "plasticknife", "plasticshield", "poisonbathbomb", "poisondagger", "poisonflask", "recyclingbin", "ring", "shuriken", "sickle", "small shield", "small sword", "spikeshield", "spiky stressball", "strength potion", "syringe", "thermometer", "vitaminpill", "warhammer", "waterbottle", "woodoil"]
+            },
+            "enemy": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["boss", "enemy", "normalslime", "poisonslime", "squid"]
+            },
+            "perk": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict",
+                "options": ["bargain", "berserker", "block master", "bulwark", "cantagious venom", "catnip", "clawtastic", "critical healing", "dodgy", "fluffy", "generic perk", "giantism", "junk jet", "lucky", "magic mirror", "magnetism", "master claw", "minimalist", "picky", "piggybank perk", "pin cushion", "poison perk", "resilient", "spikey", "sweaty", "vaccine", "vampire fangs"]
+            },
+            "claw": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict",
+                "options": ["claw", "magnet"]
+            }
+        }
+    }
+}
