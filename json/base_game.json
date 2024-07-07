@@ -227,7 +227,7 @@
 
         }
     },
-    "handmancer": {
+    "handmancers": {
         "features": {
             "hero": {
                 "type": "dropdown",
