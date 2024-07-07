@@ -1,0 +1,1360 @@
+{
+  "balatro": {
+    "features": [
+      {
+        "id": "joker1",
+        "type": "joker",
+        "selector": "ordered",
+        "scale": 1.25,
+        "rotate": -45,
+        "x_offset": 406,
+        "y_offset": 393,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 5,
+            "y-offset": 5,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "id": "joker2",
+        "type": "joker",
+        "selector": "ordered",
+        "scale": 1.25,
+        "rotate": -30,
+        "x_offset": 537,
+        "y_offset": 290,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 5,
+            "y-offset": 5,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "id": "joker3",
+        "type": "joker",
+        "selector": "ordered",
+        "scale": 1.25,
+        "rotate": -15,
+        "x_offset": 705,
+        "y_offset": 242,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 5,
+            "y-offset": 5,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "id": "joker4",
+        "type": "joker",
+        "selector": "ordered",
+        "scale": 1.25,
+        "rotate": 0,
+        "x_offset": 892,
+        "y_offset": 240,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 5,
+            "y-offset": 5,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "id": "joker5",
+        "type": "joker",
+        "selector": "ordered",
+        "scale": 1.25,
+        "rotate": 15,
+        "x_offset": 1017,
+        "y_offset": 244,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 5,
+            "y-offset": 5,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "id": "stake",
+        "type": "stake",
+        "selector": "single",
+        "scale": 2.0,
+        "rotate": 0,
+        "x_offset": 188,
+        "y_offset": 311,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 5,
+            "y-offset": 5,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "id": "deck",
+        "type": "deck",
+        "selector": "single",
+        "scale": 1.5,
+        "rotate": 0,
+        "x_offset": 43,
+        "y_offset": 295,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 5,
+            "y-offset": 5,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "id": "card1",
+        "type": "card",
+        "selector": "random",
+        "scale": 1.0,
+        "rotate": -10,
+        "x_offset": 855,
+        "y_offset": 488,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 5,
+            "y-offset": 5,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "id": "card2",
+        "type": "card",
+        "selector": "random",
+        "scale": 1.0,
+        "rotate": 10,
+        "x_offset": 960,
+        "y_offset": 488,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 5,
+            "y-offset": 5,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "id": "logo",
+        "type": "logo",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 20,
+        "y_offset": 20,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "bg",
+        "type": "bg",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 0,
+        "y_offset": 0,
+        "z_index": "middle",
+        "effects": []
+      }
+    ]
+  },
+  "the last spell": {
+    "features": [
+      {
+        "id": "logo",
+        "type": "logo",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 30,
+        "y_offset": -33,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "apoc_level",
+        "type": "apoc level",
+        "selector": "single",
+        "scale": 1.5,
+        "scale_algo": "pixel",
+        "rotate": 0,
+        "x_offset": 22,
+        "y_offset": 435,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 3,
+            "y-offset": 3,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#00000"
+          }
+        ]
+      },
+      {
+        "id": "map",
+        "type": "map",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": -158,
+        "y_offset": 156,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "omen1",
+        "type": "omen",
+        "selector": "random",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 550,
+        "y_offset": 40,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 0,
+            "y-offset": 0,
+            "blur": 20,
+            "shrink": 4,
+            "color": "#d200ff"
+          }
+        ]
+      },
+      {
+        "id": "omen2",
+        "type": "omen",
+        "selector": "random",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 660,
+        "y_offset": 40,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 0,
+            "y-offset": 0,
+            "blur": 20,
+            "shrink": 4,
+            "color": "#d200ff"
+          }
+        ]
+      },
+      {
+        "id": "omen3",
+        "type": "omen",
+        "selector": "random",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 770,
+        "y_offset": 40,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 0,
+            "y-offset": 0,
+            "blur": 20,
+            "shrink": 4,
+            "color": "#d200ff"
+          }
+        ]
+      },
+      {
+        "id": "omen4",
+        "type": "omen",
+        "selector": "random",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 880,
+        "y_offset": 40,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 0,
+            "y-offset": 0,
+            "blur": 20,
+            "shrink": 4,
+            "color": "#d200ff"
+          }
+        ]
+      },
+      {
+        "id": "omen5",
+        "type": "omen",
+        "selector": "random",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 990,
+        "y_offset": 40,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 0,
+            "y-offset": 0,
+            "blur": 20,
+            "shrink": 4,
+            "color": "#d200ff"
+          }
+        ]
+      },
+      {
+        "id": "perk1",
+        "type": "perk",
+        "selector": "random",
+        "scale": 1.0,
+        "scale_algo": "pixel",
+        "rotate": 0,
+        "x_offset": 563,
+        "y_offset": 174,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 0,
+            "y-offset": 0,
+            "blur": 20,
+            "shrink": 4,
+            "color": "#ff0000"
+          }
+        ]
+      },
+      {
+        "id": "gear1",
+        "type": "gear",
+        "selector": "random",
+        "scale": 2.0,
+        "scale_algo": "pixel",
+        "rotate": 0,
+        "x_offset": 563,
+        "y_offset": 174,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "flip",
+            "axis": "horizontal"
+          },
+          {
+            "effect_name": "shadow",
+            "x-offset": 0,
+            "y-offset": 0,
+            "blur": 20,
+            "shrink": 4,
+            "color": "#ff0000"
+          }
+        ]
+      },
+      {
+        "id": "gear2",
+        "type": "gear",
+        "selector": "random",
+        "scale": 2.0,
+        "scale_algo": "pixel",
+        "rotate": 0,
+        "x_offset": 503,
+        "y_offset": 275,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 0,
+            "y-offset": 0,
+            "blur": 20,
+            "shrink": 4,
+            "color": "#ff0000"
+          }
+        ]
+      },
+      {
+        "id": "gear3",
+        "type": "gear",
+        "selector": "random",
+        "scale": 2.0,
+        "scale_algo": "pixel",
+        "rotate": 0,
+        "x_offset": 359,
+        "y_offset": 153,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "flip",
+            "axis": "horizontal"
+          },
+          {
+            "effect_name": "shadow",
+            "x-offset": 0,
+            "y-offset": 0,
+            "blur": 20,
+            "shrink": 4,
+            "color": "#ff0000"
+          }
+        ]
+      },
+      {
+        "id": "enemy2",
+        "type": "enemy",
+        "selector": "specific-1",
+        "scale": 0.5,
+        "scale_algo": "pixel",
+        "rotate": 0,
+        "x_offset": 802,
+        "y_offset": 379,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 3,
+            "y-offset": 3,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#00000"
+          }
+        ]
+      },
+      {
+        "id": "enemy3",
+        "type": "enemy",
+        "selector": "specific-2",
+        "scale": 0.5,
+        "scale_algo": "pixel",
+        "rotate": 0,
+        "x_offset": 910,
+        "y_offset": 345,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 3,
+            "y-offset": 3,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#00000"
+          }
+        ]
+      },
+      {
+        "id": "enemy4",
+        "type": "enemy",
+        "selector": "specific-3",
+        "scale": 0.5,
+        "scale_algo": "pixel",
+        "rotate": 0,
+        "x_offset": 784,
+        "y_offset": 213,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 3,
+            "y-offset": 3,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#00000"
+          }
+        ]
+      },
+      {
+        "id": "enemy1",
+        "type": "enemy",
+        "selector": "specific-0",
+        "scale": 1.0,
+        "scale_algo": "pixel",
+        "rotate": 0,
+        "x_offset": 898,
+        "y_offset": -22,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 3,
+            "y-offset": 3,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#00000"
+          }
+        ]
+      },
+      {
+        "id": "bg",
+        "type": "bg",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 0,
+        "y_offset": 0,
+        "z_index": "middle",
+        "effects": []
+      }
+    ]
+  },
+  "darkest dungeon ii": {
+    "features": [
+      {
+        "id": "pet",
+        "type": "pet",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 39,
+        "y_offset": 456,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "hero",
+        "type": "hero",
+        "selector": "single",
+        "scale": 0.66,
+        "rotate": 0,
+        "x_offset": -401,
+        "y_offset": -348,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "region",
+        "type": "region",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": -731,
+        "y_offset": -347,
+        "z_index": "middle",
+        "effects": []
+      }
+    ]
+  },
+  "spellrogue": {
+    "features": [
+      {
+        "id": "hero",
+        "type": "hero",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 390,
+        "y_offset": 56,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "logo",
+        "type": "logo",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 23,
+        "y_offset": 15,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "act",
+        "type": "act",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 0,
+        "y_offset": 0,
+        "z_index": "middle",
+        "effects": []
+      }
+    ]
+  },
+  "hexguardian": {
+    "features": [
+      {
+        "id": "logo",
+        "type": "logo",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 28,
+        "y_offset": 32,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 3,
+            "y-offset": 3,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#00000"
+          }
+        ]
+      },
+      {
+        "id": "bg",
+        "type": "bg",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 0,
+        "y_offset": 0,
+        "z_index": "middle",
+        "effects": []
+      }
+    ]
+  },
+  "ring of pain": {
+    "features": [
+      {
+        "id": "logo",
+        "type": "logo",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 55,
+        "y_offset": 45,
+        "z_index": "top",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 4,
+            "y-offset": 4,
+            "blur": 4,
+            "shrink": 0,
+            "color": "#00000"
+          }
+        ]
+      },
+      {
+        "id": "candle",
+        "type": "candle",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 43,
+        "y_offset": 399,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "item1",
+        "type": "item",
+        "selector": "ordered",
+        "scale": 0.75,
+        "rotate": 0,
+        "x_offset": 393,
+        "y_offset": 39,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "item2",
+        "type": "item",
+        "selector": "ordered",
+        "scale": 0.5,
+        "rotate": 0,
+        "x_offset": 310,
+        "y_offset": 403,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "item3",
+        "type": "item",
+        "selector": "ordered",
+        "scale": 0.5,
+        "rotate": 0,
+        "x_offset": 563,
+        "y_offset": 402,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "monster",
+        "type": "monster",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 606,
+        "y_offset": 3,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 4,
+            "y-offset": 4,
+            "blur": 4,
+            "shrink": 0,
+            "color": "#00000"
+          }
+        ]
+      },
+      {
+        "id": "bg",
+        "type": "bg",
+        "selector": "single-bg",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": -506,
+        "y_offset": -879,
+        "z_index": "bottom",
+        "effects": []
+      }
+    ]
+  },
+  "rogue voltage": {
+    "features": [
+      {
+        "id": "logo",
+        "type": "logo",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 60,
+        "y_offset": 55,
+        "z_index": "middle",
+        "effects": [
+          {
+            "effect_name": "shadow",
+            "x-offset": 3,
+            "y-offset": 3,
+            "blur": 8,
+            "shrink": 0,
+            "color": "#00000"
+          }
+        ]
+      },
+      {
+        "id": "area",
+        "type": "area",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 0,
+        "y_offset": 0,
+        "z_index": "middle",
+        "effects": []
+      }
+    ]
+  },
+  "dungeon clawler": {
+    "features": [
+      {
+        "id": "frame",
+        "type": "frame",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 0,
+        "y_offset": 0,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "logo",
+        "type": "logo",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": -35,
+        "y_offset": 29,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "hero",
+        "type": "hero",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 16,
+        "y_offset": 297,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "item_primary",
+        "type": "item",
+        "selector": "ordered",
+        "scale": 2.0,
+        "rotate": 0,
+        "x_offset": 594,
+        "y_offset": 360,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "crusher-over",
+        "type": "crusher-over",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 855,
+        "y_offset": 207,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "main enemy",
+        "type": "enemy",
+        "selector": "ordered",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 760,
+        "y_offset": 32,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "perk",
+        "type": "perk",
+        "selector": "ordered",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 322,
+        "y_offset": 596,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "claw",
+        "type": "claw",
+        "selector": "ordered",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 564,
+        "y_offset": -124,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "item_2",
+        "type": "item",
+        "selector": "ordered",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 748,
+        "y_offset": 543,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "item_3",
+        "type": "item",
+        "selector": "ordered",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": 543,
+        "y_offset": 546,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "bg",
+        "type": "bg",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0,
+        "x_offset": -314,
+        "y_offset": -67,
+        "z_index": "bottom",
+        "effects": []
+      }
+    ]
+  },
+  "handmancer": [
+    {
+      "id": "logo0",
+      "type": "logo",
+      "selector": "single-logo simple",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 25,
+      "y_offset": -154,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "hero0",
+      "type": "hero",
+      "selector": "single",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 12,
+      "y_offset": 129,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "artifact0",
+      "type": "artifact",
+      "selector": "ordered",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 532,
+      "y_offset": 509,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 0,
+          "y-offset": 0,
+          "blur": 20,
+          "shrink": 4,
+          "color": "#d200ff"
+        }
+      ]
+    },
+    {
+      "id": "artifact1",
+      "type": "artifact",
+      "selector": "ordered",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 437,
+      "y_offset": 416,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 0,
+          "y-offset": 0,
+          "blur": 20,
+          "shrink": 4,
+          "color": "#d200ff"
+        }
+      ]
+    },
+    {
+      "id": "artifact2",
+      "type": "artifact",
+      "selector": "ordered",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 344,
+      "y_offset": 510,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 0,
+          "y-offset": 0,
+          "blur": 20,
+          "shrink": 4,
+          "color": "#d200ff"
+        }
+      ]
+    },
+    {
+      "id": "enemy0",
+      "type": "enemy",
+      "selector": "single",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 674,
+      "y_offset": 50,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "area0",
+      "type": "area",
+      "selector": "single",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 0,
+      "y_offset": 0,
+      "z_index": "middle",
+      "effects": []
+    }
+  ],
+  "die in the dungeon": [
+    {
+      "id": "logo0",
+      "type": "logo",
+      "selector": "single-logo",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 33,
+      "y_offset": 31,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "hero0",
+      "type": "hero",
+      "selector": "single",
+      "scale": "2.0",
+      "rotate": "0.00",
+      "x_offset": 24,
+      "y_offset": 255,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "enemy0",
+      "type": "enemy",
+      "selector": "single",
+      "scale": "2.5",
+      "rotate": "0.00",
+      "x_offset": 591,
+      "y_offset": 5,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "dice0",
+      "type": "dice",
+      "selector": "single-dice",
+      "scale": "2.0",
+      "rotate": "0.00",
+      "x_offset": 512,
+      "y_offset": -219,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "bg1",
+      "type": "bg",
+      "selector": "single",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 0,
+      "y_offset": 0,
+      "z_index": "middle",
+      "effects": []
+    }
+  ],
+  "emberward": [
+    {
+      "id": "logo0",
+      "type": "logo",
+      "selector": "single-logo",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 40,
+      "y_offset": 36,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "pieces0",
+      "type": "pieces",
+      "selector": "random",
+      "scale": "1.0",
+      "rotate": "0.00",
+      "x_offset": 376,
+      "y_offset": 443,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "pieces1",
+      "type": "pieces",
+      "selector": "random",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 761,
+      "y_offset": 188,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "pieces2",
+      "type": "pieces",
+      "selector": "random",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 640,
+      "y_offset": 423,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "pieces3",
+      "type": "pieces",
+      "selector": "random",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 530,
+      "y_offset": 210,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "pieces4",
+      "type": "pieces",
+      "selector": "random",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 815,
+      "y_offset": 8,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "perks0",
+      "type": "perks",
+      "selector": "random",
+      "scale": "2",
+      "rotate": "0.00",
+      "x_offset": 1003,
+      "y_offset": -54,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "cannon0",
+      "type": "cannon",
+      "selector": "ordered",
+      "scale": "2.0",
+      "rotate": "0.00",
+      "x_offset": 1050,
+      "y_offset": 465,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "cannon1",
+      "type": "cannon",
+      "selector": "ordered",
+      "scale": "2.0",
+      "rotate": "0.00",
+      "x_offset": 826,
+      "y_offset": 466,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "cannon2",
+      "type": "cannon",
+      "selector": "ordered",
+      "scale": "2.0",
+      "rotate": "0.00",
+      "x_offset": 937,
+      "y_offset": 282,
+      "z_index": "middle",
+      "effects": [
+        {
+          "effect_name": "shadow",
+          "x-offset": 3,
+          "y-offset": 3,
+          "blur": 8,
+          "shrink": 0,
+          "color": "#00000"
+        }
+      ]
+    },
+    {
+      "id": "hero0",
+      "type": "hero",
+      "selector": "single",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": 48,
+      "y_offset": 274,
+      "z_index": "middle",
+      "effects": []
+    },
+    {
+      "id": "bg0",
+      "type": "bg",
+      "selector": "single",
+      "scale": "1",
+      "rotate": "0.00",
+      "x_offset": -18,
+      "y_offset": -155,
+      "z_index": "middle",
+      "effects": []
+    }
+  ]
+}

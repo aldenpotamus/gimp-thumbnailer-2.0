@@ -1,5 +1,8 @@
 # Custom
-plugins-dir.lnk
+plug-ins.lnk
+thumbnail_2.0_template.xcf
+thumbnail_2.0_template_game_archive.xcf
+json.gen/structure.json.bak.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -226,5 +226,67 @@
             }
 
         }
+    },
+    "handmancer": {
+        "features": {
+            "hero": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "artifact": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict"
+            },
+            "enemy": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict"
+            },
+            "area": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"                
+            }
+        }
+    },
+    "die in the dungeon": {
+        "features": {
+            "hero": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "enemy": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict"
+            }
+        }
+    },
+    "emberward": {
+        "features": {
+            "hero": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            },            
+            "cannon": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict"
+            },
+            "perks": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict"
+            },
+            "pieces": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict"
+            }
+        }
     }
 }

@@ -1,0 +1,18 @@
+[GENERAL]
+spreadsheetId = <key>
+outputDir = <output dir>
+
+[SHEETS]
+main = Videos
+thumbnails = Thumbnail
+
+[JSON]
+dir = <your json dir>
+base_all = base_all.json
+base_game = base_game.json
+structure = structure.json
+gen_dir = <your generated json dir>
+merged = merged.json
+
+[AUTHENTICATION]
+serviceToken = <robot token json>
