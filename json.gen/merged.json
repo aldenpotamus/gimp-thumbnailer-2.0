@@ -2105,17 +2105,10 @@
         "options": [
           "blue",
           "brown",
-          "brown1",
-          "brown2",
           "forest",
-          "forest2",
           "purple",
-          "yellow-blue",
-          "yellow1",
-          "yellow2",
-          "yellow3",
-          "yellow4",
-          "yellow5"
+          "yellow",
+          "yellow-blue"
         ]
       }
     }
@@ -2151,12 +2144,7 @@
         "num_selections": "single",
         "options_limit": "strict",
         "options": [
-          "cinder1",
-          "cinder2",
-          "cinder3",
-          "cinder4",
-          "cinder5",
-          "cinder6"
+          "cinder"
         ]
       },
       "enemy": {
@@ -2164,47 +2152,27 @@
         "num_selections": "many",
         "options_limit": "strict",
         "options": [
-          "ant1",
-          "ant2",
-          "axe1",
-          "axe2",
-          "beetle1",
-          "beetle2",
-          "blue caterpillar1",
-          "blue caterpillar2",
-          "cicada1",
-          "cicada2",
-          "cockroach1",
-          "cockroach2",
-          "death mage1",
-          "death mage2",
-          "fly1",
-          "fly2",
-          "green mantis1",
-          "green mantis2",
-          "moth1",
-          "moth2",
-          "nun1",
-          "nun2",
-          "orange caterpillar1",
-          "orange caterpillar2",
-          "pink caterpillar1",
-          "pink caterpillar2",
-          "pink mantis1",
-          "pink mantis2",
-          "pink mantis3",
-          "plague1",
-          "plague2",
-          "purple mantis1",
-          "purple matis2",
-          "scorpion1",
-          "scorpion2",
-          "spider1",
-          "spider2",
-          "spitter1",
-          "spitter2",
-          "spore1",
-          "spore2"
+          "ant",
+          "axe",
+          "beetle",
+          "blue caterpillar",
+          "cicada",
+          "cockroach",
+          "death mage",
+          "fly",
+          "green mantis",
+          "moth",
+          "nun",
+          "orange caterpillar",
+          "pink caterpillar",
+          "pink mantis",
+          "plague",
+          "purple mantis",
+          "purple matis",
+          "scorpion",
+          "spider",
+          "spitter",
+          "spore"
         ]
       }
     }
