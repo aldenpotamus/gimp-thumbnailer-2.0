@@ -33,8 +33,11 @@ from gi.repository import Gio
 import configparser
 import os
 import sys
+import shutil
 
-sys.stderr = open('C:/log/thumbnailer-output.txt','a')
+from datetime import datetime
+
+sys.stderr = open('C:/log/thumbnailer-output-'+str(datetime.now())[:10].replace(r" ", ".").replace(":", ".")+'.txt', 'a')
 sys.stdout=sys.stderr # So that they both go to the same file
 
 def N_(message): return message
@@ -75,11 +78,19 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     image.undo_group_start()
 
     # Body of the Run Method
-    base_all = json.load(open(os.path.join(CONFIG['JSON']['dir'], CONFIG['JSON']['base_all'])))
-    base_game = json.load(open(os.path.join(CONFIG['JSON']['dir'], CONFIG['JSON']['base_game'])))
+    print("\tLoading json files...")
+    base_all = json.load(open(os.path.join(CONFIG['PROJ']['dir'], 'json', CONFIG['JSON']['base_all'])))
+    base_game = json.load(open(os.path.join(CONFIG['PROJ']['dir'], 'json', CONFIG['JSON']['base_game'])))
     baseJSON = base_all | base_game
 
+    print("\tPulling instance data from XFC and merging...")
     mergedDict = extractInstanceData(image, baseJSON)
+    
+    print("\tBacking up current merged.json file...")
+    shutil.copyfile(os.path.join(CONFIG['JSON']['gen_dir'], CONFIG['JSON']['merged']),
+                    os.path.join(CONFIG['JSON']['gen_dir'], CONFIG['JSON']['merged']+".bak."+str(datetime.now())[:19].replace(r" ", ".").replace(":", ".")))
+    
+    print("\tWriting merged data to file...")
     with open(os.path.join(CONFIG['JSON']['gen_dir'], CONFIG['JSON']['merged']), 'w') as f:
         json.dump(mergedDict, f, indent=2)
     # End Body of the Run Method
@@ -120,7 +131,7 @@ class ThumbnailerUIExport(Gimp.PlugIn):
             procedure.set_attribution("Alden Roberts",
                                       "(c) GPL V3.0 or later",
                                       "2024")
-            procedure.add_menu_path("<Image>/Filters/Thumbnailer/")
+            procedure.add_menu_path("<Image>/Filters/Thumbnailer/Support/")
 
         return procedure
 

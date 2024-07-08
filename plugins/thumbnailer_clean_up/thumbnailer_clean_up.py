@@ -32,8 +32,9 @@ from gi.repository import Gio
 
 import configparser
 import sys
+from datetime import datetime
 
-sys.stderr = open('C:/log/thumbnailer-output.txt','a')
+sys.stderr = open('C:/log/thumbnailer-output-'+str(datetime.now())[:10].replace(r" ", ".").replace(":", ".")+'.txt', 'a')
 sys.stdout=sys.stderr # So that they both go to the same file
 
 def N_(message): return message
@@ -142,7 +143,10 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     image.undo_group_start()
 
     # Body of the Run Method
+    print("\tCleaning up layer names...")
     cleanLayerNames(image)
+    
+    print("\tHomogenizing layer sizes...")
     layerSizeToParent(image)
 
     Gimp.displays_flush()
@@ -181,7 +185,7 @@ class ThumbnailerCleanup(Gimp.PlugIn):
             procedure.set_attribution("Alden Roberts",
                                       "(c) GPL V3.0 or later",
                                       "2024")
-            procedure.add_menu_path("<Image>/Filters/Thumbnailer/")
+            procedure.add_menu_path("<Image>/Filters/Thumbnailer/Support/")
 
         return procedure
 

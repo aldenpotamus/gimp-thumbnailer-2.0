@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 """
-Thumbnailer - Image Exporter
+Thumbnailer - Import Games
 """
 
 
@@ -30,9 +30,10 @@ from gi.repository import GObject
 from gi.repository import GLib
 from gi.repository import Gio
 
-import os
 import configparser
+import os
 import sys
+import shutil
 import pygsheets
 
 from datetime import datetime
@@ -42,18 +43,6 @@ sys.stdout=sys.stderr # So that they both go to the same file
 
 def N_(message): return message
 def _(message): return GLib.dgettext(None, message)
-
-def exportImage(image, thumbToExport, CONFIG):
-    print(f"\t\tExporting image {thumbToExport['videoid']}...")
-    new_image = image.duplicate()
-    for l in new_image.get_layer_by_name('_Generated').list_children():
-        l.set_visible(l.get_name() == thumbToExport['videoid'])
-    layer = new_image.merge_visible_layers(Gimp.MergeType.CLIP_TO_IMAGE)
-
-    outputPath = os.path.join(CONFIG['GENERAL']['outputDir'], thumbToExport['filename']+'.png')   
-    file = Gio.File.new_for_path(outputPath)
-    Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, new_image, [layer], file)
-    new_image.delete()
 
 def getDataFromSheet(thumbsWorksheet):
     print('\tPulling thumbs from sheet...')
@@ -69,56 +58,106 @@ def getDataFromSheet(thumbsWorksheet):
     return thumbsToBuild
 
 def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
-    print("----- EXPORT IMAGES -----")
-    Gimp.context_push()
-    image.undo_group_start()
-
-    # Body of the Run Method
+    print("----- IMPORT GAMES -----")
+    
     print('\tConnecting to gSheets...')
     gc = pygsheets.authorize(service_file=CONFIG['AUTHENTICATION']['serviceToken'])
     sheet = gc.open_by_key(CONFIG['GENERAL']['spreadsheetId'])
+    # mainWorksheet = sheet.worksheet_by_title(CONFIG['SHEETS']['main'])
     thumbsWorksheet = sheet.worksheet_by_title(CONFIG['SHEETS']['thumbnails'])
+    thumbsToProcess = getDataFromSheet(thumbsWorksheet)
 
-    print('\tPulling thumbs to export...')
-    thumbsToExport = [x for x in getDataFromSheet(thumbsWorksheet) if 'json' in x and x['json']]
+    games = {}
+    for thumb in thumbsToProcess:
+        if 'local_game' in thumb:
+            games[thumb['local_game']] = True
+        if 'game' in thumb:
+            games[thumb['game']] = True
+
+    gamesToMerge = [x.lower().replace(' ', '_')+'.xcf' for x in games.keys()]
+
+    print(f'\tGames to merge in {gamesToMerge}')
+
+    # Body of the Run Method
+    print('\tCreating Image...')
+    image = Gimp.Image.new(1280, 720, 0)
+    Gimp.Display.new(image)
     
-    print('\tExporting thumbs...')
-    for thumb in thumbsToExport:
-        exportImage(image, thumb, CONFIG)
+    Gimp.context_push()
+    image.undo_group_start()
+
+    print('\tCreating Needed Layer Groups...')
+    gameAssets = Gimp.Layer.group_new(image)
+    gameAssets.set_name('Game Assets')
+    image.insert_layer(gameAssets, None, 0)
+
+    generalLayerGroup = Gimp.Layer.group_new(image)
+    generalLayerGroup.set_name('_General')
+    image.insert_layer(generalLayerGroup, None, 0)
+
+    generatedLayerGroup = Gimp.Layer.group_new(image)
+    generatedLayerGroup.set_name('_Generated')
+    image.insert_layer(generatedLayerGroup, None, 0)
+
+    print('\tImporting Univeral Thumbnail Elements...')
+    file = Gio.File.new_for_path(os.path.join(CONFIG['PROJ']['dir'], 'img', 'general.xcf'))
+    layersToAdd = Gimp.file_load_layers(1, image, file)
+    for layer in layersToAdd:
+        image.insert_layer(layer, generalLayerGroup, 0)  
+        generalLayerGroup.set_expanded(False) 
+        layer.set_expanded(False)
+
+    for gameXCF in gamesToMerge:
+        file = Gio.File.new_for_path(os.path.join(CONFIG['PROJ']['dir'], 'img', gameXCF))
+        layersToAdd = Gimp.file_load_layers(1, image, file)
+
+        for layer in layersToAdd:
+            image.insert_layer(layer, gameAssets, 0)
+            # layer.set_name(layer.get_name().replace('_', ' ').replace('.xcf', ''))
+            layer.set_expanded(False)
+    
+            gameLayer = layer.list_children()[0]
+            image.reorder_item(gameLayer, gameAssets, 0)
+            Gimp.Image.remove_layer(image, layer)
+            Gimp.Layer.delete(layer)
+
+            gameLayer.set_name(gameXCF.lower().replace('_', ' ').replace('.xcf', ''))
 
     Gimp.displays_flush()
+    # End Body of the Run Method
+
     image.undo_group_end()
     Gimp.context_pop()
 
     return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
 
-class ThumbnailerImgExporter(Gimp.PlugIn):
+class ThumbnailerImportGames(Gimp.PlugIn):
     def __init__(self):
-        print('ThumbnailerImgExporter: Parsing config file...')
+        print('ThumbnailerImportGames: Parsing config file...')
         self.CONFIG = configparser.ConfigParser()
         self.CONFIG.read('thumbnailer.ini')
     
     ## GimpPlugIn virtual methods ##
     def do_query_procedures(self):
-        return [ "plug-in-thumbnailer-img-exporter-python" ]
+        return [ "plug-in-thumbnailer-import-games-python" ]
     
     def do_set_i18n(self, procname):
         return True, "gimp30-python", None
 
     def do_create_procedure(self, name):
         procedure = None
-        if name == "plug-in-thumbnailer-img-exporter-python":
+        if name == "plug-in-thumbnailer-import-games-python":
             procedure = Gimp.ImageProcedure.new(self, name,
                                                 Gimp.PDBProcType.PLUGIN,
                                                 run, self.CONFIG)
 
-            procedure.set_image_types("*")
+            # procedure.set_image_types("*")
             procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
             procedure.set_documentation (
-                N_("Cleans Up Template File"),
-                N_("Cleanup Layer Names & Layer Sizes to be Consistent"),
+                N_("Imports Games Data into Thumbnail File"),
+                N_("Each game is stored as a seperate file, this merged those files for processing."),
                 name)
-            procedure.set_menu_label(N_("3. Export Thumbnails"))
+            procedure.set_menu_label(N_("1. Import Games"))
             procedure.set_attribution("Alden Roberts",
                                       "(c) GPL V3.0 or later",
                                       "2024")
@@ -126,4 +165,4 @@ class ThumbnailerImgExporter(Gimp.PlugIn):
 
         return procedure
 
-Gimp.main(ThumbnailerImgExporter.__gtype__, sys.argv)
+Gimp.main(ThumbnailerImportGames.__gtype__, sys.argv)

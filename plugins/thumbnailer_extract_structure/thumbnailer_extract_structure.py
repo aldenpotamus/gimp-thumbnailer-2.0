@@ -39,7 +39,7 @@ import shutil
 import sys
 import math
 
-sys.stderr = open('C:/log/thumbnailer-output.txt','a')
+sys.stderr = open('C:/log/thumbnailer-output-'+str(datetime.now())[:10].replace(r" ", ".").replace(":", ".")+'.txt', 'a')
 sys.stdout=sys.stderr # So that they both go to the same file
 
 def N_(message): return message
@@ -49,7 +49,7 @@ def _(message): return GLib.dgettext(None, message)
 def getLayerStructure(image, layers):
     game = None
     ids = set()
-    result = []
+    result = {"features": []}
     for l in layers:
         if l.is_text_layer():
             type = "text"
@@ -59,7 +59,7 @@ def getLayerStructure(image, layers):
             layerLocator = re.sub(r'[^\[]*\[([^\]]*)\].*', r'\1', l.get_name())
             gameInner, type = layerLocator.split('-')
             if game and game != gameInner:
-                print("\tError: composed structure contains items from multiple games.")
+                print("\t\tError: composed structure contains items from multiple games.")
                 return None
             game = gameInner
 
@@ -85,15 +85,15 @@ def getLayerStructure(image, layers):
         while f'{type}{i}' in ids:
             i += 1
         ids.add(f'{type}{i}')
-        result.append({
+        result['features'].append({
                         "id": f'{type}{i}',
                         "type": type,
-                        "selector": "TBD:ordered,single,random,specific-N,single-NAME",
+                        "selector": "NO-QUOTE:ordered,single,random,specific-N,single-NAME",
                         "scale": f'{scale},1',
                         "rotate": f'{r1 if r1 else 0.0:.2f},{r2 if r2 else 0.0:.2f},-{r1 if r1 else 0.0:.2f},-{r2 if r2 else 0.0:.2f},0',
                         "x_offset": l.get_offsets().offset_x,
                         "y_offset": l.get_offsets().offset_y,
-                        "z_index": "TBD:bottom,middle,top",
+                        "z_index": "NO-QUOTE:bottom,middle,top",
                         "effects": []
                       } | ({
                         "font": font,
@@ -178,7 +178,7 @@ class ThumbnailerStructureExport(Gimp.PlugIn):
             procedure.set_attribution("Alden Roberts",
                                       "(c) GPL V3.0 or later",
                                       "2024")
-            procedure.add_menu_path("<Image>/Filters/Thumbnailer/")
+            procedure.add_menu_path("<Image>/Filters/Thumbnailer/Support/")
 
         return procedure
 

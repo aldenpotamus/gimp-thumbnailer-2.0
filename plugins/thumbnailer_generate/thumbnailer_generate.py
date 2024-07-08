@@ -39,7 +39,9 @@ import random
 import math
 import os
 
-sys.stderr = open('C:/log/thumbnailer-output.txt','a')
+from datetime import datetime
+
+sys.stderr = open('C:/log/thumbnailer-output-'+str(datetime.now())[:10].replace(r" ", ".").replace(":", ".")+'.txt', 'a')
 sys.stdout=sys.stderr # So that they both go to the same file
 
 def N_(message): return message
@@ -158,7 +160,7 @@ def buildThumbnail(instance, structure):
                 featureInstance = instance['features'][feature['type']].pop() if feature['type'] in instance['features'] else "any"
         elif feature['selector'].startswith("single"):
             if feature['type'] in instance['features'] and len(instance['features'][feature['type']]) != 1:
-                print("WARNING: Single feature provided multiple options...")
+                print("\t\tWARNING: Single feature provided multiple options...")
             choice = "any"
             if "-" in feature['selector']:
                 choice = feature['selector'].split('-')[1]
@@ -176,7 +178,7 @@ def buildThumbnail(instance, structure):
             else:
                 continue
         else:
-            print("WARNING: Selector Not Recognized....")
+            print("\t\tWARNING: Selector Not Recognized....")
         
         # Choose Feature
         chosenLayer = None
@@ -364,8 +366,6 @@ def parseHex(hex):
 
 # Utility Functions
 def getDataFromSheet(thumbsWorksheet):
-    print('\tPulling thumbs from sheet...')
-
     headers = thumbsWorksheet.get_values(start='A3', end='Q3', returnas='matrix')[0]
     thumbRows = thumbsWorksheet.get_values(start='A5', end='Q50', returnas='matrix')
 
@@ -384,16 +384,19 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     # Body of the Run Method
     print('\tLoading Structure JSON...')
     structure = json.load(open(os.path.join(CONFIG['JSON']['gen_dir'], CONFIG['JSON']['structure'])))
+    
     print('\tConnecting to gSheets...')
     gc = pygsheets.authorize(service_file=CONFIG['AUTHENTICATION']['serviceToken'])
     sheet = gc.open_by_key(CONFIG['GENERAL']['spreadsheetId'])
-
-    mainWorksheet = sheet.worksheet_by_title(CONFIG['SHEETS']['main'])
+    # mainWorksheet = sheet.worksheet_by_title(CONFIG['SHEETS']['main'])
     thumbsWorksheet = sheet.worksheet_by_title(CONFIG['SHEETS']['thumbnails'])
 
+    print('\tPulling thumbs from sheet...')
     thumbsToBuild = [x for x in getDataFromSheet(thumbsWorksheet) if 'json' in x and x['json']]
     
-    for thumb in thumbsToBuild:
+    print(f'\tGenerating {len(thumbsToBuild)} thumbnails...')
+    for (i,thumb) in enumerate(thumbsToBuild):
+        print(f'\tGenerating thumbnail #{i}...')
         buildThumbnail(json.loads(thumb['json']), structure)
     # End Body of the Run Method
 
@@ -429,7 +432,7 @@ class ThumbnailerGenerate(Gimp.PlugIn):
                 N_("Template + Google Sheet => Thumbnail"),
                 N_("Use metadata from Google Sheets to compose Thumbnails from layers in the Template."),
                 name)
-            procedure.set_menu_label(N_("Generate Thumbnails"))
+            procedure.set_menu_label(N_("2. Generate Thumbnails"))
             procedure.set_attribution("Alden Roberts",
                                       "(c) GPL V3.0 or later",
                                       "2024")
