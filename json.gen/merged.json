@@ -1223,7 +1223,32 @@
     }
   },
   "hexguardian": {
-    "features": {}
+    "features": {
+      "description": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,255}$"
+      },
+      "tagline": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,30}$"
+      },
+      "success": {
+        "type": "dropdown",
+        "options": [
+          "win",
+          "loss",
+          "win (close)",
+          "loss (close)",
+          "rage quit"
+        ],
+        "num_selections": "single",
+        "options_limit": "strict"
+      }
+    }
   },
   "ring of pain": {
     "features": {
@@ -1698,10 +1723,42 @@
   },
   "rogue voltage": {
     "features": {
+      "description": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,255}$"
+      },
+      "tagline": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,30}$"
+      },
+      "success": {
+        "type": "dropdown",
+        "options": [
+          "win",
+          "loss",
+          "win (close)",
+          "loss (close)",
+          "rage quit"
+        ],
+        "num_selections": "single",
+        "options_limit": "strict"
+      },
       "area": {
         "type": "dropdown",
         "num_selections": "single",
-        "options_limit": "strict"
+        "options_limit": "strict",
+        "options": [
+          "bogmarsh",
+          "caves",
+          "dino",
+          "sewer",
+          "tutorial",
+          "volcano"
+        ]
       }
     }
   },
@@ -2312,7 +2369,8 @@
           "l large",
           "small l",
           "square",
-          "straight",
+          "straight five",
+          "straight four",
           "t",
           "t large",
           "w",

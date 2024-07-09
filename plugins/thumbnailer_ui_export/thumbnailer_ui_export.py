@@ -45,12 +45,22 @@ def _(message): return GLib.dgettext(None, message)
 
 import re
 import json
-def extractInstanceData(image, instanceData):
-    gameAssetsGroup = image.get_layer_by_name('Game Assets')
+from os import listdir
+from os.path import isfile, join
+
+def extractInstanceData(instanceData, CONFIG):
+    # gameAssetsGroup = image.get_layer_by_name('Game Assets')
     allFeatures = instanceData['all']
     del instanceData['all']
-    for game in gameAssetsGroup.list_children():
-        gameName = game.get_name()
+    # for game in gameAssetsGroup.list_children():
+    imgPath = os.path.join(CONFIG['PROJ']['dir'], 'img')
+    for gameFileName in [f for f in listdir(imgPath) if isfile(join(imgPath, f)) and f != 'general.xcf' ]:
+        print(f'\t\tLoading file: {gameFileName} to merge...')
+        gameFile = Gio.File.new_for_path(os.path.join(CONFIG['PROJ']['dir'], 'img', gameFileName))
+        image = Gimp.file_load(1, gameFile) # RUN-NONINTERACTIVE
+        game = image.get_layer_by_name('Game Assets').list_children()[0]
+
+        gameName = gameFileName.replace("_", " ").replace('.xcf', '')
         tmpFeatures = allFeatures.copy()
         tmpFeatures.update(instanceData[gameName]['features'])
         instanceData[gameName]['features'] = tmpFeatures
@@ -70,12 +80,13 @@ def extractInstanceData(image, instanceData):
                 for addOp in reversed(instanceData[gameName]['features'][featureGroupName]['options_additional']):
                     instanceData[gameName]['features'][featureGroupName]['options'].insert(0, addOp)
                 del instanceData[gameName]['features'][featureGroupName]['options_additional']
+        
+        image.delete()
+
     return instanceData
 
 def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     print("----- EXPORT UI JSON -----")
-    Gimp.context_push()
-    image.undo_group_start()
 
     # Body of the Run Method
     print("\tLoading json files...")
@@ -84,7 +95,7 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     baseJSON = base_all | base_game
 
     print("\tPulling instance data from XFC and merging...")
-    mergedDict = extractInstanceData(image, baseJSON)
+    mergedDict = extractInstanceData(baseJSON, CONFIG)
     
     print("\tBacking up current merged.json file...")
     shutil.copyfile(os.path.join(CONFIG['JSON']['gen_dir'], CONFIG['JSON']['merged']),
@@ -94,10 +105,6 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     with open(os.path.join(CONFIG['JSON']['gen_dir'], CONFIG['JSON']['merged']), 'w') as f:
         json.dump(mergedDict, f, indent=2)
     # End Body of the Run Method
-
-    Gimp.displays_flush()
-    image.undo_group_end()
-    Gimp.context_pop()
 
     return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
 

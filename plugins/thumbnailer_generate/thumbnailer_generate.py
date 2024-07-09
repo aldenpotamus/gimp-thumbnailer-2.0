@@ -50,19 +50,23 @@ def _(message): return GLib.dgettext(None, message)
 ######### BUILD THUMBNAIL #########
 def buildThumbnail(instance, structure):
     game = instance['game']
+    
     # Image & Group
     image = Gimp.list_images()[0]
     generated = image.get_layer_by_name('_Generated')
+    
     # Create Video Layer Group
     videoThumbGroup = image.get_layer_by_name("empty_layer_group").copy()
     videoThumbGroup.set_name(instance['videoid'])
     videoThumbGroup.set_visible(True)
     image.insert_layer(videoThumbGroup, generated, 0)
+    
     # Create Border Segment
     borderGroup = image.get_layer_by_name("empty_layer_group").copy()
     borderGroup.set_name('border')
     borderGroup.set_visible(True)
     image.insert_layer(borderGroup, videoThumbGroup, 0)
+    
     # Add Border & Mask
     borderColorLayer = image.get_layer_by_name(f"border[{game}]").copy()
     borderColorLayer.set_visible(True)
@@ -71,11 +75,11 @@ def buildThumbnail(instance, structure):
     borderMask.set_visible(True)
     image.insert_layer(borderMask, borderGroup, 0)
     borderMask.set_mode(58)
+    
     # Add Episode Text
     epNumber = instance['ep_number']
     subText = instance['ep_sub_text']
     subText = re.sub('<br>', '\n', subText)
-    # subText = "Nights\n1 - 3"
     epLayer = image.get_layer_by_name('empty_layer').copy()
     epLayer.set_visible(True)
     epSubLayer = image.get_layer_by_name('empty_layer').copy()
@@ -94,13 +98,13 @@ def buildThumbnail(instance, structure):
     white.set_rgba(1.0, 1.0, 1.0, 1.0)    
     Gimp.context_set_foreground(white)
     epTextLayer = Gimp.text_font(image,
-                                epLayer,
-                                20,
-                                591,
-                                epNumber, 0,
-                                True,
-                                120,
-                                Gimp.fonts_get_by_name("Bangers Regular")[0])  
+                                 epLayer,
+                                 20,
+                                 591,
+                                 epNumber, 0,
+                                 True,
+                                 120,
+                                 Gimp.fonts_get_by_name("Bangers Regular")[0])  
     Gimp.floating_sel_anchor(epTextLayer)
     image.select_color(0, epLayer, white)
     epBounds = image.get_selection().bounds(image)
@@ -116,11 +120,13 @@ def buildThumbnail(instance, structure):
     Gimp.floating_sel_anchor(epTextSubLayer)
     image.select_color(0, epSubLayer, white)
     epSubBounds = image.get_selection().bounds(image)
+    
     # Drop Shadow For Text
     if epBounds.non_empty:
         createDropShadow(epLayer, 3,3, 4, 0, "000000")
     if epSubBounds.non_empty:
         createDropShadow(epSubLayer, 3,3, 4, 0, "000000")
+    
     # Add Border Behind Text
     image.get_selection().none(image)
     top = min(epBounds.y1 if epBounds.non_empty else 0, epSubBounds.y1 if epSubBounds.non_empty else 720) - 15
@@ -129,6 +135,7 @@ def buildThumbnail(instance, structure):
     image.get_selection().feather(image, 8)
     borderMask.edit_clear()
     image.get_selection().none(image)
+    
     # Add Highlight & Logo
     borderHighlightMask = image.get_layer_by_name("border_highlight_mask").copy()
     borderHighlightMask.set_visible(True)
@@ -136,6 +143,7 @@ def buildThumbnail(instance, structure):
     potamusLogo = image.get_layer_by_name("potamus_logo").copy()
     potamusLogo.set_visible(True)
     image.insert_layer(potamusLogo, borderGroup, 0)
+    
     # Iterate Over Features
     featuresGroupTop = image.get_layer_by_name("empty_layer_group").copy()
     featuresGroupTop.set_name('features-top')
@@ -149,11 +157,14 @@ def buildThumbnail(instance, structure):
     featuresGroupBottom.set_name('features-bottom')
     featuresGroupBottom.set_visible(True)
     image.insert_layer(featuresGroupBottom, videoThumbGroup, 5)
+       
     for feature in reversed(structure[game]['features']):
         featureGroup = image.get_layer_by_name("empty_layer_group").copy()
         featureGroup.set_visible(True)
+        
         print(f"\tProcessing feature: {feature['type']}[{game}]")
         featureOptions = image.get_layer_by_name(f"{feature['type']}[{game}]")
+        
         # Get Selector Type
         if feature['selector'] == "ordered":
             if instance['features'][feature['type']]:
@@ -231,16 +242,15 @@ def buildThumbnail(instance, structure):
                 print(f"\t\tFound Segment: {chosenLayerSegment}")
                 segmentLayer = image.get_layer_by_name(chosenLayerSegment).copy()
                 image.insert_layer(segmentLayer, featureGroup, len(featureGroup.list_children()))
+                
                 if 'scale_algo' in feature:
                     if feature['scale_algo'] == 'pixel':
-                        # INTERPOLATION-NONE (0)
-                        Gimp.context_set_interpolation(0)
+                        Gimp.context_set_interpolation(Gimp.InterpolationType.NONE)
                     elif feature['scale_algo'] == 'smooth':
-                        # INTERPOLATION-NOHALO (3)
-                        Gimp.context_set_interpolation(3)
+                        Gimp.context_set_interpolation(Gimp.InterpolationType.NOHALO)
                 else:
-                    # scale image => INTERPOLATION-NOHALO (3)
-                    Gimp.context_set_interpolation(3)
+                    Gimp.context_set_interpolation(Gimp.InterpolationType.NOHALO)
+                
                 segmentLayer.transform_2d(0,0, # Source
                                          feature['scale'],feature['scale'], # Scale
                                          feature['rotate']*math.pi/180,   # Angle
@@ -253,14 +263,12 @@ def buildThumbnail(instance, structure):
         image.insert_layer(newFeatureLayer, featureGroup, 0)
         if 'scale_algo' in feature:
             if feature['scale_algo'] == 'pixel':
-                # INTERPOLATION-NONE (0)
-                Gimp.context_set_interpolation(0)
+                Gimp.context_set_interpolation(Gimp.InterpolationType.NONE)
             elif feature['scale_algo'] == 'smooth':
-                # INTERPOLATION-NOHALO (3)
-                Gimp.context_set_interpolation(3)
+                Gimp.context_set_interpolation(Gimp.InterpolationType.NOHALO)
         else:
-            # scale image => INTERPOLATION-NOHALO (3)
-            Gimp.context_set_interpolation(3)
+            Gimp.context_set_interpolation(Gimp.InterpolationType.NOHALO)
+        
         newFeatureLayer.transform_2d(0,0, # Source
                                      feature['scale'],feature['scale'], # Scale
                                      feature['rotate']*math.pi/180,   # Angle
@@ -279,14 +287,47 @@ def buildThumbnail(instance, structure):
             if effect['effect_name'] == 'shadow':
                 createDropShadow(newFeatureLayer, effect['x-offset'], effect['y-offset'], effect['blur'], effect['shrink'], "000000" if not effect['color'] else effect['color'])
         featureGroup.set_expanded(False)
+    
+        # Add Tagline
+    
+    if 'tagline' in instance['features']:
+        print('\tTagline found, creating text layer...')
+        # Currently this causes a crash https://gitlab.gnome.org/GNOME/gimp/-/issues/8900#note_1850867
+        # This would be better as it would create an editable text layer but it is currently broken.
+        # taglineTextLayer = Gimp.TextLayer.new(image,
+        #                                       instance['features']['tagline'][0],
+        #                                       Gimp.fonts_get_by_name("Bangers Regular")[0],
+        #                                       96,
+        #                                       image.get_unit())
+
+        Gimp.context_set_foreground(white)
+        taglineLayer = image.get_layer_by_name('empty_layer').copy()
+        taglineLayer.set_visible(True)
+        taglineLayer.set_name('episode tagline')
+        image.insert_layer(taglineLayer, featuresGroupMiddle, 0)
+
+        taglineTextLayer = Gimp.text_font(image,
+                                          taglineLayer,
+                                          400,
+                                          400,
+                                          instance['features']['tagline'][0], 0,
+                                          True,
+                                          96,
+                                          Gimp.fonts_get_by_name("Bangers Regular")[0])  
+        Gimp.floating_sel_anchor(taglineTextLayer)
+    else:
+        print('\tTagline not found, skipping...')
+
     setVisibleAll(videoThumbGroup)
     epLayer.set_expanded(False)
+    epTextGroup.set_expanded(False)
     borderGroup.set_expanded(False)
     videoThumbGroup.set_expanded(False)
 
 # Create Drop Shadow For Layer
 def createDropShadow(layer, offset_x, offset_y, blurRadius, shrink, color):
     image = Gimp.list_images()[0]
+    
     # Get Parent & Position
     parent = layer.get_parent()
     childPosition = 0
@@ -294,11 +335,13 @@ def createDropShadow(layer, offset_x, offset_y, blurRadius, shrink, color):
         if child.get_name() == layer.get_name():
             childPosition = i
             break
+    
     # Copy & Resize Layer
     tempLayer = layer.copy()
     tempLayer.set_visible(True)
     image.insert_layer(tempLayer, parent, childPosition+1)
     tempLayer.resize_to_image_size()
+    
     # Get Selection
     Gimp.context_set_sample_transparent(True)
     transparent = Gegl.Color()
@@ -307,19 +350,22 @@ def createDropShadow(layer, offset_x, offset_y, blurRadius, shrink, color):
     image.select_color(0, tempLayer, transparent)
     image.get_selection().invert(image)
     image.get_selection().shrink(image, shrink)
-    # image.get_selection().feather(image, blurRadius)
+
     # Remove Temp Layer
     image.remove_layer(tempLayer)
+    
     # Create Shadow Layer
     dropShadowLayer = image.get_layer_by_name('empty_layer').copy()
     dropShadowLayer.set_name("shadow of "+layer.get_name())
     dropShadowLayer.set_visible(True)
+    
     # Fill Selection
     shadowColor = parseHex(color)
     Gimp.context_set_foreground(shadowColor)
     image.insert_layer(dropShadowLayer, parent, childPosition+1)
     dropShadowLayer.edit_fill(Gimp.FillType.FOREGROUND)
     image.get_selection().none(image)
+    
     # Blur Shadow
     procedure = Gimp.get_pdb().lookup_procedure('plug-in-gauss')
     config = procedure.create_config()
@@ -388,7 +434,6 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     print('\tConnecting to gSheets...')
     gc = pygsheets.authorize(service_file=CONFIG['AUTHENTICATION']['serviceToken'])
     sheet = gc.open_by_key(CONFIG['GENERAL']['spreadsheetId'])
-    # mainWorksheet = sheet.worksheet_by_title(CONFIG['SHEETS']['main'])
     thumbsWorksheet = sheet.worksheet_by_title(CONFIG['SHEETS']['thumbnails'])
 
     print('\tPulling thumbs from sheet...')
@@ -397,6 +442,7 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     print(f'\tGenerating {len(thumbsToBuild)} thumbnails...')
     for (i,thumb) in enumerate(thumbsToBuild):
         print(f'\tGenerating thumbnail #{i}...')
+        print(thumb['json'])
         buildThumbnail(json.loads(thumb['json']), structure)
     # End Body of the Run Method
 
