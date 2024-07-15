@@ -424,7 +424,8 @@
             }
         });
 
-        var destUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfjcgs30O_H1bOCjd-rgeBLCM72DMAa7sNHzVVFmwBvLJ4IIw/viewform?usp=pp_url&entry.2037368357=videoid&entry.1944317321='
+        var username = document.getElementById('username-selector').querySelector('input').value
+        var destUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfjcgs30O_H1bOCjd-rgeBLCM72DMAa7sNHzVVFmwBvLJ4IIw/formResponse?usp=pp_url&entry.2082106358='+username+'&entry.1944317321='
         var fullURL = destUrl+JSON.stringify(submissionResult);
         window.open(fullURL, '_blank').focus();
     }
@@ -437,7 +438,14 @@
 
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        autoFillJSON = JSON.parse(urlParams.get('fill'));
+        autoFillJSON = JSON.parse(urlParams.get('fill').replaceAll('\n', ' '));
+
+        var usernameSelector = buildFeatureElement('username', 'text-single');
+        usernameSelector.id = 'video-selector'
+        usernameSelector.querySelector('input').value =  urlParams.get('username');
+        if(urlParams.get('username'))
+            usernameSelector.querySelector('input').setAttribute('readonly', 'readonly');
+        document.getElementById('form-elements').appendChild(usernameSelector);
 
         var videoIdSelector = buildFeatureElement('videoid', 'text-single');
         videoIdSelector.id = 'video-selector'
