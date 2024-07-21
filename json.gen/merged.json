@@ -355,16 +355,16 @@
         "num_selections": "single",
         "options_limit": "strict",
         "options": [
-          "crimson tick",
-          "hatchling crocodilian",
-          "larval carrion eater",
-          "mucilaginous slime",
-          "orphan wolf cub",
-          "pygmy pliskin",
-          "reanimated rabbit",
-          "shambler's spawn",
-          "shrieker chick",
-          "unnatural owlet"
+          "carrion eater",
+          "croc",
+          "owl",
+          "rabbit",
+          "shambler",
+          "shrieker",
+          "slime",
+          "snake",
+          "tick",
+          "wolf"
         ]
       },
       "flame": {
