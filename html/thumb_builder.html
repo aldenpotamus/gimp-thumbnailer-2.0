@@ -275,9 +275,9 @@
         if(element.querySelectorAll('input').length == 2) {
         var secondaryValue = element.querySelectorAll('input')[1].value;
             if(secondaryValue) {
-                selectedValue += '-' + secondaryValue;
+                selectedValue += '|' + secondaryValue;
             } else {
-                selectedValue += '-*';
+                selectedValue += '|*';
             }
         }
 
@@ -294,6 +294,10 @@
     }
 
     function buildFeatureElement(id, templateName, options=null, secondary_options=null, constraint=null, regex=null) {
+        if(secondary_options) {
+            secondary_options = ['*'].concat(secondary_options);
+        }
+
         var singleSelectTemplate = document.getElementById(templateName)
         var instance = singleSelectTemplate.content.cloneNode(true);
 
@@ -330,35 +334,48 @@
             });
         }
 
-        instance.querySelector('input')?.addEventListener('change', event => {
+        /* CHANGE HANDLERS */
+        instance.querySelectorAll('input').forEach(input => input.addEventListener('change', event => {
             if(event.target.closest('.feature-and-button')) {
-                var listElement = createListElementWithButton(event.target.closest('.feature-and-button'))
-                input.value = '';
+                if(event.target.closest('.feature-and-button').querySelectorAll('input').length == 2) {
+                    var input1 = event.target.closest('.feature-and-button').querySelectorAll('input')[0];
+                    var input2 = event.target.closest('.feature-and-button').querySelectorAll('input')[1];
+                    if(input1.value && input2.value) {
+                        var listElement = createListElementWithButton(event.target.closest('.feature-and-button'))
+                        input1.value = '';
+                        input2.value = '';
+                    }
+                } else {
+                    var listElement = createListElementWithButton(event.target.closest('.feature-and-button'))
+                    input.value = '';
+                }
             }
-        });
+        }));
 
         instance.querySelector('button')?.addEventListener('click', event => {
             var listElement = createListElementWithButton(event.target.closest('.feature-and-button'))
             input.value = '';
         });
 
-        instance.querySelector('input')?.addEventListener('keypress', event => {
+        instance.querySelectorAll('input').forEach(input => input.addEventListener('keypress', event => {
             if (event.key === "Enter") {
                 var selectedValue = event.target.value;
                 if(event.target.parentElement.querySelectorAll('input').length == 2) {
-                    var secondaryValue = event.target.parentElement.querySelectorAll('input')[1].value;
+                    var input1 = event.target.closest('.feature-and-button').querySelectorAll('input')[0];
+                    var input2 = event.target.closest('.feature-and-button').querySelectorAll('input')[1];
+
                     if(secondaryValue) {
-                        selectedValue += '-' + secondaryValue;
+                        selectedValue = input1.value + '|' + input2.value;
                     } else {
-                        selectedValue += '-*';
+                        selectedValue = input1.value + '|*';
                     }
                 }
                 createListElementWithButtonFromValue(selectedValue, event.target.closest('.feature-container'));
                 event.target.value = '';
             }
-        });
+        }));
 
-        instance.querySelector('input')?.addEventListener('keydown', event => {
+        instance.querySelectorAll('input').forEach(input => input.addEventListener('keydown', event => {
             if(event.which == 9) {
                 var found = false;
 
@@ -370,6 +387,53 @@
                     nextInput.focus();
                     event.preventDefault();
                     return;
+                }
+
+                if(event.target.parentElement.querySelectorAll('input').length == 2) {
+                    var input1 = event.target.closest('.feature-and-button').querySelectorAll('input')[0];
+                    var input2 = event.target.closest('.feature-and-button').querySelectorAll('input')[1];
+
+                    if(input1.value && input2.value) {
+                        Array.from(input1.list.children).forEach(child => {
+                            var regex = input1.value.replaceAll('*', '[*]').split(' ').join('.*');
+                            if(child.value.match(regex)) {
+                                input1.value = child.value;
+                            }
+                        });
+                        
+                        Array.from(input2.list.children).forEach(child => {
+                            var regex = input2.value.replaceAll('*', '[*]').split(' ').join('.*');
+                            if(child.value.match(regex)) {
+                                input2.value = child.value;
+                            }
+                        });
+
+                        input1.focus();
+
+                        return;                     
+                    } else if (input1.value && !input2.value) {
+                        Array.from(input1.list.children).forEach(child => {
+                            var regex = input1.value.split(' ').join('.*');
+                            if(child.value.match(regex) && !found) {
+                                input1.value = child.value;
+                                found = true;
+                            }
+                        });
+                        input2.focus();
+                        return;
+                    } else if (!input1.value && input2.value) {
+                        Array.from(input2.list.children).forEach(child => {
+                            var regex = input2.value.split(' ').join('.*');
+                            if(child.value.match(regex) && !found) {
+                                input2.value = child.value;
+                                found = true;
+                            }
+                        });
+                        input1.focus();
+                        return;
+                    } else {
+                        return;
+                    }
                 }
 
                 if(event.target.closest('.feature-and-selection') && event.target.closest('.feature-and-selection').querySelector('.select-datalist')){
@@ -402,7 +466,8 @@
                     nextInput.focus();
                 }
             }
-        });
+        }));
+        /* CHANGE HANDLERS END */
 
         if(constraint) instance.querySelector('button')?.setAttribute('max_vals', parseInt(constraint))
         if(regex) instance.querySelector('button')?.setAttribute('regex_validate', regex)

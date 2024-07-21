@@ -341,7 +341,6 @@
           "man-at-arms",
           "occultist",
           "plague doctor",
-          "plauge doctor",
           "runaway",
           "vestal"
         ],
@@ -1971,12 +1970,11 @@
         "options_limit": "strict",
         "options": [
           "claw",
-          "magnet"
-        ],
-        "secondary_options": [
-          "1",
-          "2",
-          "3"
+          "claw(1)",
+          "claw(2)",
+          "claw(3)",
+          "magnet",
+          "magnet(1)"
         ]
       }
     }
@@ -2324,7 +2322,7 @@
           "hourglass1",
           "hourglass2",
           "key",
-          "key ",
+          "key (1)",
           "key gold",
           "key silver",
           "laptop",
@@ -2384,9 +2382,6 @@
           "water bucket",
           "wood1",
           "wood2"
-        ],
-        "secondary_options": [
-          "1"
         ]
       },
       "pieces": {
