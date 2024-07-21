@@ -46,6 +46,7 @@
 
         .feature-section > input {
             flex-grow: 1;
+            margin-right: 5px;
         }
 
         .feature-section > * {
@@ -190,6 +191,26 @@
     </div>
 </template>
 
+<template id="double-dropdown-many">
+    <div class="feature-container">
+        <div class="feature-and-selection">
+            <div class="feature-and-button">
+                <div class="feature-section">
+                    <div class="select-title"><span></span></div>
+                    <input class="select-input" list="" name="" />
+                    <datalist class="select-datalist"></datalist>
+                    <input class="select-input" list="" name="" />
+                    <datalist class="select-datalist"></datalist>
+                </div>
+                <button>⇶</button>
+            </div>
+            <div class="selection-section">
+                <ul class="selection-result-list"></ul>
+            </div>
+        </div>
+    </div>
+</template>
+
 <script>
     function nextInDOM(selector, currentElement) {
         var nextElement= null;
@@ -246,9 +267,19 @@
             return;
         }
 
+        var selectedValue = input.value;
+        if(element.querySelectorAll('input').length == 2) {
+        var secondaryValue = element.querySelectorAll('input')[1].value;
+            if(secondaryValue) {
+                selectedValue += '-' + secondaryValue;
+            } else {
+                selectedValue += '-*';
+            }
+        }
+
         var li = document.createElement('li');
         var textSpan = document.createElement('span');
-        textSpan.innerHTML = input.value;
+        textSpan.innerHTML = selectedValue;
         var delButton = document.createElement('button');
         delButton.addEventListener('click', function(event) {
             event.target.closest('ul').removeChild(li);
@@ -258,10 +289,10 @@
         element.parentElement.querySelector('ul').appendChild(li);
     }
 
-    function buildFeatureElement(id, templateName, options=null, constraint=null, regex=null) {
+    function buildFeatureElement(id, templateName, options=null, secondary_options=null, constraint=null, regex=null) {
         var singleSelectTemplate = document.getElementById(templateName)
         var instance = singleSelectTemplate.content.cloneNode(true);
-        // console.log(instance);
+
         instance.querySelector('.feature-container').id = getElementIdFromId(id);
         instance.querySelector('.select-title > span').innerHTML = id;
         
@@ -281,6 +312,20 @@
             });
         }
 
+        if(secondary_options) {
+            instance.querySelectorAll('datalist')[1].id = id+'-second-list';
+            var input = instance.querySelectorAll('.select-input')[1];
+            input.setAttribute('list', id+'-second-list');
+
+            var ul = instance.querySelector('ul')[1];
+    
+            secondary_options.forEach(key => {
+                var option = document.createElement('option');
+                option.value  = key;
+                instance.querySelectorAll('datalist')[1].appendChild(option);
+            });
+        }
+
         instance.querySelector('input')?.addEventListener('change', event => {
             if(event.target.closest('.feature-and-button')) {
                 var listElement = createListElementWithButton(event.target.closest('.feature-and-button'))
@@ -295,7 +340,16 @@
 
         instance.querySelector('input')?.addEventListener('keypress', event => {
             if (event.key === "Enter") {
-                createListElementWithButtonFromValue(event.target.value, event.target.closest('.feature-container'));
+                var selectedValue = event.target.value;
+                if(event.target.parentElement.querySelectorAll('input').length == 2) {
+                    var secondaryValue = event.target.parentElement.querySelectorAll('input')[1].value;
+                    if(secondaryValue) {
+                        selectedValue += '-' + secondaryValue;
+                    } else {
+                        selectedValue += '-*';
+                    }
+                }
+                createListElementWithButtonFromValue(selectedValue, event.target.closest('.feature-container'));
                 event.target.value = '';
             }
         });
@@ -370,7 +424,12 @@
 
                 var template = feature['type']+'-'+selectionMatches[1];
                 if(document.getElementById(template)?.content) {
-                    var newFeature = buildFeatureElement(featureStr, template, options=feature['options'], constraint=constraint, regex=feature['option_validate']);
+                    var newFeature = buildFeatureElement(featureStr,
+                                                         template,
+                                                         options=feature['options'],
+                                                         secondary_options=feature['secondary_options'],
+                                                         constraint=constraint,
+                                                         regex=feature['option_validate']);
                     featuresElement.appendChild(newFeature)
                 } else {
                     console.log('Template not found for ['+template+']');
@@ -430,15 +489,17 @@
         window.open(fullURL, '_blank').focus();
     }
 
-    fetch('https://raw.githubusercontent.com/aldenpotamus/gimp-thumbnailer-2.0/main/json.gen/merged.json')
-    // fetch('../json.gen/merged.json')
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    var fetchString = urlParams.has('dev') ? '../json.gen/merged.json': 'https://raw.githubusercontent.com/aldenpotamus/gimp-thumbnailer-2.0/main/json.gen/merged.json';
+    fetch(fetchString)
       .then(response => response.json())
       .then(data => {
         console.log(data);
 
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        autoFillJSON = JSON.parse(urlParams.get('fill').replaceAll('\n', ' '));
+        if(urlParams.get('fill'))
+            autoFillJSON = JSON.parse(urlParams.get('fill').replaceAll('\n', ' '));
 
         var usernameSelector = buildFeatureElement('username', 'text-single');
         usernameSelector.id = 'video-selector'

@@ -324,10 +324,32 @@
           "tangle"
         ]
       },
-      "heros": {
-        "type": "dropdown",
+      "hero": {
+        "type": "double-dropdown",
         "num_selections": "many[4]",
-        "options_limit": "strict"
+        "options_limit": "strict",
+        "options": [
+          "bounty hunter",
+          "crusader",
+          "duelist",
+          "flagellant",
+          "graverobber",
+          "hellion",
+          "highwayman",
+          "jester",
+          "leper",
+          "man-at-arms",
+          "occultist",
+          "plague doctor",
+          "plauge doctor",
+          "runaway",
+          "vestal"
+        ],
+        "secondary_options": [
+          "attack",
+          "idle",
+          "meltdown"
+        ]
       },
       "pet": {
         "type": "dropdown",
@@ -1950,6 +1972,11 @@
         "options": [
           "claw",
           "magnet"
+        ],
+        "secondary_options": [
+          "1",
+          "2",
+          "3"
         ]
       }
     }
@@ -2357,6 +2384,9 @@
           "water bucket",
           "wood1",
           "wood2"
+        ],
+        "secondary_options": [
+          "1"
         ]
       },
       "pieces": {

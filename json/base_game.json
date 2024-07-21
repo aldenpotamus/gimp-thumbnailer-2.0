@@ -30,8 +30,8 @@
                 "num_selections": "single",
                 "options_limit": "strict"
             },
-            "heros": {
-                "type": "dropdown",
+            "hero": {
+                "type": "double-dropdown",
                 "num_selections": "many[4]",
                 "options_limit": "strict"
             },
