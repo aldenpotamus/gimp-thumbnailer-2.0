@@ -2215,6 +2215,7 @@
         "options": [
           "basic",
           "chunk",
+          "knight",
           "mage",
           "merchant",
           "scholar",
