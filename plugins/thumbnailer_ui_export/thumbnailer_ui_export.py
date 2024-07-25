@@ -70,12 +70,26 @@ def extractInstanceData(instanceData, CONFIG):
                 continue
             if 'options' not in instanceData[gameName]['features'][featureGroupName]:
                 instanceData[gameName]['features'][featureGroupName]['options'] = set()
+                instanceData[gameName]['features'][featureGroupName]['secondary_options'] = set()
+
                 for feature in featureGroup.list_children():
                     featureName = re.sub(r'\[[^]]*\]', "", feature.get_name())
-                    featureName = re.sub(r'(?:[\(][0-9]*[\)])', '', featureName)
+                    secondaryFeatureName = re.search(r'[|](.*)', featureName)
+                    if secondaryFeatureName:
+                        instanceData[gameName]['features'][featureGroupName]['secondary_options'].add(secondaryFeatureName[1])
+                    featureName = re.sub(r'(?:[|](.*))', '', featureName)
                     featureName = re.sub(r' [0-9]+', "", featureName)
+                    featureName = re.sub(r'(?:[\(][0-9]*[\)])', '', featureName)
                     instanceData[gameName]['features'][featureGroupName]['options'].add(featureName)
+
             instanceData[gameName]['features'][featureGroupName]['options'] = sorted(instanceData[gameName]['features'][featureGroupName]['options'])
+            
+            if 'secondary_options' in instanceData[gameName]['features'][featureGroupName]:
+                if instanceData[gameName]['features'][featureGroupName]['secondary_options']:
+                    instanceData[gameName]['features'][featureGroupName]['secondary_options'] = sorted(instanceData[gameName]['features'][featureGroupName]['secondary_options'])
+                else:
+                    del instanceData[gameName]['features'][featureGroupName]['secondary_options']
+
             if 'options_additional' in instanceData[gameName]['features'][featureGroupName]:
                 for addOp in reversed(instanceData[gameName]['features'][featureGroupName]['options_additional']):
                     instanceData[gameName]['features'][featureGroupName]['options'].insert(0, addOp)

@@ -1970,11 +1970,7 @@
         "options_limit": "strict",
         "options": [
           "claw",
-          "claw(1)",
-          "claw(2)",
-          "claw(3)",
-          "magnet",
-          "magnet(1)"
+          "magnet"
         ]
       }
     }
@@ -2322,7 +2318,7 @@
           "hourglass1",
           "hourglass2",
           "key",
-          "key (1)",
+          "key ",
           "key gold",
           "key silver",
           "laptop",

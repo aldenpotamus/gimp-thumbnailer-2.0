@@ -70,8 +70,6 @@ def getDataFromSheet(thumbsWorksheet):
 
 def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     print("----- EXPORT IMAGES -----")
-    Gimp.context_push()
-    image.undo_group_start()
 
     # Body of the Run Method
     print('\tConnecting to gSheets...')
@@ -86,8 +84,6 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     for thumb in thumbsToExport:
         exportImage(image, thumb, CONFIG)
 
-    Gimp.displays_flush()
-    image.undo_group_end()
     Gimp.context_pop()
 
     return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
@@ -113,7 +109,9 @@ class ThumbnailerImgExporter(Gimp.PlugIn):
                                                 run, self.CONFIG)
 
             procedure.set_image_types("*")
-            procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
+            procedure.set_sensitivity_mask (Gimp.ProcedureSensitivityMask.DRAWABLE |
+                                            Gimp.ProcedureSensitivityMask.DRAWABLES)
+            
             procedure.set_documentation (
                 N_("Cleans Up Template File"),
                 N_("Cleanup Layer Names & Layer Sizes to be Consistent"),

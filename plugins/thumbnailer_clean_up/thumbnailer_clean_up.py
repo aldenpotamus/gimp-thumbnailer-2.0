@@ -176,7 +176,9 @@ class ThumbnailerCleanup(Gimp.PlugIn):
                                                 run, self.CONFIG)
 
             procedure.set_image_types("*")
-            procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
+            procedure.set_sensitivity_mask (Gimp.ProcedureSensitivityMask.DRAWABLE |
+                                            Gimp.ProcedureSensitivityMask.DRAWABLES)
+            
             procedure.set_documentation (
                 N_("Cleans Up Template File"),
                 N_("Cleanup Layer Names & Layer Sizes to be Consistent"),

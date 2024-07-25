@@ -442,7 +442,7 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     print(f'\tGenerating {len(thumbsToBuild)} thumbnails...')
     for (i,thumb) in enumerate(thumbsToBuild):
         print(f'\tGenerating thumbnail #{i}...')
-        print(thumb['json'])
+        # print(thumb['json'])
         buildThumbnail(json.loads(thumb['json']), structure)
     # End Body of the Run Method
 
@@ -473,7 +473,9 @@ class ThumbnailerGenerate(Gimp.PlugIn):
                                                 run, self.CONFIG)
 
             procedure.set_image_types("*")
-            procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
+            procedure.set_sensitivity_mask (Gimp.ProcedureSensitivityMask.DRAWABLE |
+                                            Gimp.ProcedureSensitivityMask.DRAWABLES)
+            
             procedure.set_documentation (
                 N_("Template + Google Sheet => Thumbnail"),
                 N_("Use metadata from Google Sheets to compose Thumbnails from layers in the Template."),

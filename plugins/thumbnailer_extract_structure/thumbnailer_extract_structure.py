@@ -169,7 +169,9 @@ class ThumbnailerStructureExport(Gimp.PlugIn):
                                                 run, self.CONFIG)
 
             procedure.set_image_types("*")
-            procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
+            procedure.set_sensitivity_mask (Gimp.ProcedureSensitivityMask.DRAWABLE |
+                                            Gimp.ProcedureSensitivityMask.DRAWABLES)
+            
             procedure.set_documentation (
                 N_("Generate a Structure JSON File From Template"),
                 N_("Uses a set of layers composed by the user to generate a structure JSON payload."),

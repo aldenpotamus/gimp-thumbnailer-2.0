@@ -122,6 +122,7 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
             Gimp.Layer.delete(layer)
 
             gameLayer.set_name(gameXCF.lower().replace('_', ' ').replace('.xcf', ''))
+            gameLayer.set_expanded(False)
 
     Gimp.displays_flush()
     # End Body of the Run Method
@@ -151,8 +152,9 @@ class ThumbnailerImportGames(Gimp.PlugIn):
                                                 Gimp.PDBProcType.PLUGIN,
                                                 run, self.CONFIG)
 
-            # procedure.set_image_types("*")
+            procedure.set_image_types("*")
             procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
+
             procedure.set_documentation (
                 N_("Imports Games Data into Thumbnail File"),
                 N_("Each game is stored as a seperate file, this merged those files for processing."),
