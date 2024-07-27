@@ -1090,6 +1090,12 @@
                     "blur": 8,
                     "shrink": 0,
                     "color": "#00000"
+                },{
+                    "effect_name": "colorize",
+                    "hue": 209.196,
+                    "saturation": 100,
+                    "lightness": -40.0
+
                 }]
             },
             {
@@ -1108,6 +1114,12 @@
                     "blur": 8,
                     "shrink": 0,
                     "color": "#00000"
+                },{
+                    "effect_name": "colorize",
+                    "hue": 301.572,
+                    "saturation": 100,
+                    "lightness": -40.0
+
                 }]
             },
             {
@@ -1126,6 +1138,12 @@
                     "blur": 8,
                     "shrink": 0,
                     "color": "#00000"
+                },{
+                    "effect_name": "colorize",
+                    "hue": 45.9,
+                    "saturation": 100,
+                    "lightness": -40.0
+
                 }]
             },
             {
@@ -1144,6 +1162,12 @@
                     "blur": 8,
                     "shrink": 0,
                     "color": "#00000"
+                },{
+                    "effect_name": "colorize",
+                    "hue": 115.812,
+                    "saturation": 100,
+                    "lightness": -40.0
+
                 }]
             },
             {
@@ -1162,6 +1186,12 @@
                     "blur": 8,
                     "shrink": 0,
                     "color": "#00000"
+                },{
+                    "effect_name": "colorize",
+                    "hue": 19.476,
+                    "saturation": 100,
+                    "lightness": -40.0
+
                 }]
             },
             {

@@ -286,6 +286,8 @@ def buildThumbnail(instance, structure):
                     transformResult = newFeatureLayer.transform_flip(0, offsetY+height/2, 1280, offsetY+height/2)
             if effect['effect_name'] == 'shadow':
                 createDropShadow(newFeatureLayer, effect['x-offset'], effect['y-offset'], effect['blur'], effect['shrink'], "000000" if not effect['color'] else effect['color'])
+            if effect['effect_name'] == 'colorize':
+                colorizeLayer(newFeatureLayer, effect['hue'], effect['saturation'], effect['lightness'])
         featureGroup.set_expanded(False)
     
         # Add Tagline
@@ -326,6 +328,8 @@ def buildThumbnail(instance, structure):
 
 # Create Drop Shadow For Layer
 def createDropShadow(layer, offset_x, offset_y, blurRadius, shrink, color):
+    print(f'\t\tAdding drop shadow to layer: {layer.get_name()}')
+    
     image = Gimp.list_images()[0]
     
     # Get Parent & Position
@@ -378,6 +382,16 @@ def createDropShadow(layer, offset_x, offset_y, blurRadius, shrink, color):
     result = procedure.run(config)
     transformResult = dropShadowLayer.transform_2d(0,0,1,1,0,offset_x,offset_y)
     cropToContent(image, dropShadowLayer)
+
+def colorizeLayer(layer, hue, saturation, lightness):
+    print(f'\t\tColorizing layer: {layer.get_name()}')
+    procedure = Gimp.get_pdb().lookup_procedure('gimp-drawable-colorize-hsl')
+    config = procedure.create_config(); config.set_property('drawable', layer)
+    config.set_property('hue', hue)
+    config.set_property('saturation', saturation)
+    config.set_property('lightness', lightness)
+    result = procedure.run(config)
+    return result.index(0)
 
 # Crop to Content                      
 def cropToContent(imageIn, layerIn):
