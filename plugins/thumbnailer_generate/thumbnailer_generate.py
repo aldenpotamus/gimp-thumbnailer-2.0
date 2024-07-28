@@ -213,6 +213,8 @@ def buildThumbnail(instance, structure):
         else:
             requestedLayerName = f"{featureInstance}[{game}-{feature['type']}]"
             if not image.get_layer_by_name(requestedLayerName):
+                featureInstance = featureInstance.replace('*','[*]')
+                print(f"{featureInstance} [0-9]+[\[]{game}-{feature['type']}[\]]")
                 multipleOptionsRegex = re.compile(f"{featureInstance} [0-9]+[\[]{game}-{feature['type']}[\]]")
                 missingOptions = [l for l in image.get_layer_by_name(f"{feature['type']}[{game}]").list_children() if multipleOptionsRegex.match(l.get_name())]
                 if missingOptions:
