@@ -554,7 +554,7 @@
 
         var username = document.getElementById('username-selector').querySelector('input').value
         var destUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfjcgs30O_H1bOCjd-rgeBLCM72DMAa7sNHzVVFmwBvLJ4IIw/formResponse?usp=pp_url&entry.2082106358='+username+'&entry.1944317321='
-        var fullURL = destUrl+JSON.stringify(submissionResult);
+        var fullURL = destUrl+JSON.stringify(submissionResult).replace("&", "%26");
         window.open(fullURL, '_blank').focus();
     }
 
