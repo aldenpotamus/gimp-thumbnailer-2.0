@@ -194,6 +194,11 @@
                 "type": "dropdown",
                 "num_selections": "single",
                 "options_limit": "strict"
+            },
+            "hero": {
+                "type": "dropdown",
+                "num_selections": "many",
+                "options_limit": "strict"
             }
         }
     },
