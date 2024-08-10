@@ -213,33 +213,43 @@ def buildThumbnail(instance, structure):
         else:
             requestedLayerName = f"{featureInstance}[{game}-{feature['type']}]"
             if not image.get_layer_by_name(requestedLayerName):
-                featureInstance = featureInstance.replace('*','[*]')
-                print(f"{featureInstance} [0-9]+[\[]{game}-{feature['type']}[\]]")
                 multipleOptionsRegex = re.compile(f"{featureInstance} [0-9]+[\[]{game}-{feature['type']}[\]]")
+                multipleSegmentsRegex = re.compile(f"{featureInstance}[(][0-9]+[)][\[]{game}-{feature['type']}[\]]")
+
                 missingOptions = [l for l in image.get_layer_by_name(f"{feature['type']}[{game}]").list_children() if multipleOptionsRegex.match(l.get_name())]
+                missingSegments = [l for l in image.get_layer_by_name(f"{feature['type']}[{game}]").list_children() if multipleSegmentsRegex.match(l.get_name())]
+
                 if missingOptions:
                     chosenLayer = random.choice(missingOptions)
                     newFeatureLayer = chosenLayer.copy()
                     layerEnderStr = f"[{game}-{feature['type']}]"
-                    print(f"\t\t\tChose '{chosenLayer.get_name().replace(layerEnderStr, '')}' from options: [{', '.join([l.get_name().replace(layerEnderStr, '') for l in missingOptions])}]")
+                    print(f"\t\tChose '{chosenLayer.get_name().replace(layerEnderStr, '')}' from options: [{', '.join([l.get_name().replace(layerEnderStr, '') for l in missingOptions])}]")
+                elif missingSegments:
+                    chosenLayer = missingSegments[-1]
+                    newFeatureLayer = chosenLayer.copy()
+                    print(f"\t\tFirst segment specified '{chosenLayer.get_name()}' of: [{', '.join([l.get_name() for l in missingSegments])}]")
                 else:
                     print(f"WARNING: Layer '{requestedLayerName}' doesn't exist... skipping.")
                     continue
             else:
                 chosenLayer = image.get_layer_by_name(f"{featureInstance}[{game}-{feature['type']}]")
                 newFeatureLayer = chosenLayer.copy()
+        
         featureGroup.set_name(feature['type']+"-"+featureInstance)
         newFeatureLayer.set_visible(True)
         newFeatureLayer.set_name(f"{game}-{feature['type']}-{feature['id']}")
+        
         if feature['z_index'] == 'top':
             image.insert_layer(featureGroup, featuresGroupTop, 0)
         elif feature['z_index'] == 'middle':
             image.insert_layer(featureGroup, featuresGroupMiddle, 0)
         elif feature['z_index'] == 'bottom':
             image.insert_layer(featureGroup, featuresGroupBottom, 0)
+        
         i = 1
         while True:
             chosenLayerSegment = re.sub(r'^([^[]*)([^]]*])$', rf'\1({str(i)})\2', chosenLayer.get_name())
+            print(chosenLayerSegment)
             if image.get_layer_by_name(chosenLayerSegment):
                 print(f"\t\tFound Segment: {chosenLayerSegment}")
                 segmentLayer = image.get_layer_by_name(chosenLayerSegment).copy()
