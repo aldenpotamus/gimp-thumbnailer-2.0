@@ -293,5 +293,9 @@
                 "options_limit": "strict"
             }
         }
+    },
+    "cataclismo": {
+        "features": {
+        }
     }
 }
