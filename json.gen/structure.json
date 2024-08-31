@@ -1425,8 +1425,8 @@
         "id": "logo0",
         "type": "logo",
         "selector": "single-logo",
-        "scale": "1.0,1",
-        "rotate": "0.00,77.82,-0.00,-77.82,0",
+        "scale": 1,
+        "rotate": 0,
         "x_offset": 33,
         "y_offset": 26,
         "z_index": "middle",
@@ -1440,7 +1440,7 @@
         "rotate": 0,
         "x_offset": 482,
         "y_offset": 188,
-        "z_index": "NO-QUOTE:bottom,middle,top",
+        "z_index": "middle",
         "effects": []
       },
       {
@@ -1451,7 +1451,7 @@
         "rotate": 0,
         "x_offset": 530,
         "y_offset": 182,
-        "z_index": "NO-QUOTE:bottom,middle,top",
+        "z_index": "middle",
         "effects": []
       },
       {
