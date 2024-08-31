@@ -2255,6 +2255,7 @@
           "decimate",
           "dice",
           "drone",
+          "earthquake",
           "fireball",
           "flamethrower",
           "frost",
@@ -2421,6 +2422,34 @@
     }
   },
   "cataclismo": {
+    "features": {
+      "description": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,255}$"
+      },
+      "tagline": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,30}$"
+      },
+      "success": {
+        "type": "dropdown",
+        "options": [
+          "win",
+          "loss",
+          "win (close)",
+          "loss (close)",
+          "rage quit"
+        ],
+        "num_selections": "single",
+        "options_limit": "strict"
+      }
+    }
+  },
+  "tactical breach wizards": {
     "features": {
       "description": {
         "type": "text",
