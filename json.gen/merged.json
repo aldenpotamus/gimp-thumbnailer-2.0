@@ -2443,11 +2443,11 @@
         "num_selections": "single",
         "options_limit": "strict",
         "options": [
-          "chainmasterhero-idle",
-          "jujitsukahero-idle",
-          "roninhero-idle",
-          "shadowhero-idle",
-          "wandererhero-idle"
+          "chainmaster",
+          "jujitsuka",
+          "ronin",
+          "shadow",
+          "wanderer"
         ]
       },
       "weapon": {
