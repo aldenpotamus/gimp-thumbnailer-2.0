@@ -301,5 +301,19 @@
     "tactical breach wizards": {
         "features": {
         }
+    },
+    "shogun showdown": {
+        "features": {
+            "hero": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "weapon": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            }
+        }
     }
 }

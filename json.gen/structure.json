@@ -1466,5 +1466,53 @@
         "effects": []
       }
     ]
+  },
+  "Shogun Showdown": {
+    "features": [
+      {
+        "id": "hero",
+        "type": "hero",
+        "selector": "single",
+        "scale": 1,
+        "rotate": 0,
+        "x_offset": 951,
+        "y_offset": 318,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "weapon",
+        "type": "weapon",
+        "selector": "single",
+        "scale": 1,
+        "rotate": 0,
+        "x_offset": 168,
+        "y_offset": 445,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "logo0",
+        "type": "logo",
+        "selector": "single-logo",
+        "scale": 1,
+        "rotate": 0,
+        "x_offset": 46,
+        "y_offset": 43,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "bg0",
+        "type": "bg",
+        "selector": "single-bg",
+        "scale": 1,
+        "rotate": 0,
+        "x_offset": 0,
+        "y_offset": 0,
+        "z_index": "middle",
+        "effects": []
+      }
+    ]
   }
 }

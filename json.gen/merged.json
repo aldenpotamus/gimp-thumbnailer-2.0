@@ -2253,6 +2253,7 @@
           "chomp",
           "dart",
           "decimator",
+          "dice",
           "drill",
           "drone",
           "earthquake",
@@ -2282,6 +2283,7 @@
           "academy certificate",
           "adaptive blueprint",
           "adventureers legacy",
+          "aggresive construction",
           "amplify poison",
           "balanced circuit",
           "black ice shard",
@@ -2407,6 +2409,95 @@
         ],
         "num_selections": "single",
         "options_limit": "strict"
+      }
+    }
+  },
+  "shogun showdown": {
+    "features": {
+      "description": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,255}$"
+      },
+      "tagline": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,30}$"
+      },
+      "success": {
+        "type": "dropdown",
+        "options": [
+          "win",
+          "loss",
+          "win (close)",
+          "loss (close)",
+          "rage quit"
+        ],
+        "num_selections": "single",
+        "options_limit": "strict"
+      },
+      "hero": {
+        "type": "dropdown",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "options": [
+          "chainmasterhero-idle",
+          "jujitsukahero-idle",
+          "roninhero-idle",
+          "shadowhero-idle",
+          "wandererhero-idle"
+        ]
+      },
+      "weapon": {
+        "type": "dropdown",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "options": [
+          "arrow",
+          "back charge",
+          "back shadow dash",
+          "back smoke bomb",
+          "back strike",
+          "blade of patience",
+          "blazing suisei",
+          "bo",
+          "bomb",
+          "chakram",
+          "charge",
+          "copycat mirror",
+          "crossbow",
+          "curse",
+          "dash",
+          "dragon punch",
+          "earth impale",
+          "grappling hook",
+          "hookblade",
+          "katana",
+          "ki push",
+          "kunai",
+          "lightning",
+          "maku",
+          "meteor hammer",
+          "mon",
+          "nagiboku",
+          "sai",
+          "scarstrike",
+          "shadow dash",
+          "shadow kama",
+          "shield",
+          "shuriken",
+          "smoke bomb",
+          "spear",
+          "swaptoss",
+          "swirl",
+          "tanegashima",
+          "tetsubo",
+          "thorns",
+          "trap",
+          "twin tessen"
+        ]
       }
     }
   }
