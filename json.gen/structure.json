@@ -1470,7 +1470,7 @@
   "shogun showdown": {
     "features": [
       {
-        "id": "hero",
+        "id": "hero0",
         "type": "hero",
         "selector": "single",
         "scale": 1,
@@ -1481,7 +1481,7 @@
         "effects": []
       },
       {
-        "id": "weapon",
+        "id": "weapon0",
         "type": "weapon",
         "selector": "single",
         "scale": 1,
