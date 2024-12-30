@@ -65,7 +65,7 @@ def getLayerStructure(image, layers):
 
         scale = 1
         if image.get_layer_by_name(f'{type}[{game}]'):
-            baselineLayer = image.get_layer_by_name(f'{type}[{game}]').list_children()[0]
+            baselineLayer = image.get_layer_by_name(f'{type}[{game}]').get_children()[0]
             scale = l.get_width() / baselineLayer.get_width()
 
             a = ogWidth = baselineLayer.get_width()
@@ -104,7 +104,7 @@ def getLayerStructure(image, layers):
 
 # Recursive Get Child Leaf Nodes
 def getChildLeafNodes(layerGroup, result):
-    for layer in layerGroup.list_children():
+    for layer in layerGroup.get_children():
         if layer.is_group():
             getChildLeafNodes(layer, result)
         else:
@@ -116,7 +116,7 @@ def divineStucture(image, layer):
     return (layer.get_name(), getLayerStructure(image, features))
     
 
-def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
+def run(procedure, run_mode, image, layers, args, CONFIG):
     print("----- EXTRACT STRUCTURE -----")
     Gimp.context_push()
     image.undo_group_start()

@@ -52,19 +52,19 @@ def extractInstanceData(instanceData, CONFIG):
     # gameAssetsGroup = image.get_layer_by_name('Game Assets')
     allFeatures = instanceData['all']
     del instanceData['all']
-    # for game in gameAssetsGroup.list_children():
+    # for game in gameAssetsGroup.get_children():
     imgPath = os.path.join(CONFIG['PROJ']['dir'], 'img')
     for gameFileName in [f for f in listdir(imgPath) if isfile(join(imgPath, f)) and f != 'general.xcf' ]:
         print(f'\t\tLoading file: {gameFileName} to merge...')
         gameFile = Gio.File.new_for_path(os.path.join(CONFIG['PROJ']['dir'], 'img', gameFileName))
         image = Gimp.file_load(1, gameFile) # RUN-NONINTERACTIVE
-        game = image.get_layer_by_name('Game Assets').list_children()[0]
+        game = image.get_layer_by_name('Game Assets').get_children()[0]
 
         gameName = gameFileName.replace("_", " ").replace('.xcf', '')
         tmpFeatures = allFeatures.copy()
         tmpFeatures.update(instanceData[gameName]['features'])
         instanceData[gameName]['features'] = tmpFeatures
-        for featureGroup in [g for g in game.list_children() if g.is_group()]:
+        for featureGroup in [g for g in game.get_children() if g.is_group()]:
             featureGroupName = re.sub(r'\[[^]]*\]', "", featureGroup.get_name())
             if featureGroupName not in instanceData[gameName]['features']:
                 continue
@@ -72,7 +72,7 @@ def extractInstanceData(instanceData, CONFIG):
                 instanceData[gameName]['features'][featureGroupName]['options'] = set()
                 instanceData[gameName]['features'][featureGroupName]['secondary_options'] = set()
 
-                for feature in featureGroup.list_children():
+                for feature in featureGroup.get_children():
                     featureName = re.sub(r'\[[^]]*\]', "", feature.get_name())
                     secondaryFeatureName = re.search(r'[|](.*)', featureName)
                     if secondaryFeatureName:
@@ -99,7 +99,7 @@ def extractInstanceData(instanceData, CONFIG):
 
     return instanceData
 
-def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
+def run(procedure, run_mode, image, layers, args, CONFIG):
     print("----- EXPORT UI JSON -----")
 
     # Body of the Run Method

@@ -46,7 +46,7 @@ def _(message): return GLib.dgettext(None, message)
 def exportImage(image, thumbToExport, CONFIG):
     print(f"\t\tExporting image {thumbToExport['videoid']}...")
     new_image = image.duplicate()
-    for l in new_image.get_layer_by_name('_Generated').list_children():
+    for l in new_image.get_layer_by_name('_Generated').get_children():
         l.set_visible(l.get_name() == thumbToExport['videoid'])
     layer = new_image.merge_visible_layers(Gimp.MergeType.CLIP_TO_IMAGE)
 
@@ -68,7 +68,7 @@ def getDataFromSheet(thumbsWorksheet):
 
     return thumbsToBuild
 
-def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
+def run(procedure, run_mode, image, layers, args, CONFIG):
     print("----- EXPORT IMAGES -----")
 
     # Body of the Run Method

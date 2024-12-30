@@ -52,7 +52,7 @@ def buildThumbnail(instance, structure):
     game = instance['game']
     
     # Image & Group
-    image = Gimp.list_images()[0]
+    image = Gimp.get_images()[0]
     generated = image.get_layer_by_name('_Generated')
     
     # Create Video Layer Group
@@ -104,7 +104,7 @@ def buildThumbnail(instance, structure):
                                  epNumber, 0,
                                  True,
                                  120,
-                                 Gimp.fonts_get_by_name("Bangers Regular")[0])  
+                                 Gimp.Font.get_by_name("Bangers Regular"))  
     Gimp.floating_sel_anchor(epTextLayer)
     image.select_color(0, epLayer, white)
     epBounds = image.get_selection().bounds(image)
@@ -115,7 +115,7 @@ def buildThumbnail(instance, structure):
                                     subText, 0,
                                     True,
                                     57 if subText.count('\n') == 1 else 75,
-                                    Gimp.fonts_get_by_name("Bangers Regular")[0])
+                                    Gimp.Font.get_by_name("Bangers Regular"))
     epTextSubLayer.set_line_spacing(-15)
     Gimp.floating_sel_anchor(epTextSubLayer)
     image.select_color(0, epSubLayer, white)
@@ -194,20 +194,20 @@ def buildThumbnail(instance, structure):
         # Choose Feature
         chosenLayer = None
         if featureInstance == "any":
-            chosenLayer = random.choice(featureOptions.list_children())
+            chosenLayer = random.choice(featureOptions.get_children())
             newFeatureLayer = chosenLayer.copy()
         elif featureInstance.startswith("any-include:"):
-            includedFeature = [f for f in featureOptions.list_children() if re.match(featureInstance.split(':')[1],  f.get_name()) or featureInstance.split(':')[1] in f.get_name()]
+            includedFeature = [f for f in featureOptions.get_children() if re.match(featureInstance.split(':')[1],  f.get_name()) or featureInstance.split(':')[1] in f.get_name()]
             if not includedFeature:
                 print(f"WARNING: any selector returned not results [{featureInstance.split(':')[1]}]... defaulting to any")
-                includedFeature = featureOptions.list_children()
+                includedFeature = featureOptions.get_children()
             chosenLayer = random.choice(includedFeature)
             newFeatureLayer = chosenLayer.copy()
         elif featureInstance.startswith("any-exclude:"):   
-            excludedFeature = [f for f in featureOptions.list_children() if not re.match(featureInstance.split(':')[1],  f.get_name()) or featureInstance.split(':')[1] not in f.get_name()]
+            excludedFeature = [f for f in featureOptions.get_children() if not re.match(featureInstance.split(':')[1],  f.get_name()) or featureInstance.split(':')[1] not in f.get_name()]
             if not includedFeature:
                 print(f"WARNING: any selector returned not results [{featureInstance.split(':')[1]}]... defaulting to any")
-                excludedFeature = featureOptions.list_children()
+                excludedFeature = featureOptions.get_children()
             chosenLayer = random.choice(excludedFeature)
             newFeatureLayer = chosenLayer.copy()
         else:
@@ -216,8 +216,8 @@ def buildThumbnail(instance, structure):
                 multipleOptionsRegex = re.compile(f"{featureInstance} [0-9]+[\[]{game}-{feature['type']}[\]]")
                 multipleSegmentsRegex = re.compile(f"{featureInstance}[(][0-9]+[)][\[]{game}-{feature['type']}[\]]")
 
-                missingOptions = [l for l in image.get_layer_by_name(f"{feature['type']}[{game}]").list_children() if multipleOptionsRegex.match(l.get_name())]
-                missingSegments = [l for l in image.get_layer_by_name(f"{feature['type']}[{game}]").list_children() if multipleSegmentsRegex.match(l.get_name())]
+                missingOptions = [l for l in image.get_layer_by_name(f"{feature['type']}[{game}]").get_children() if multipleOptionsRegex.match(l.get_name())]
+                missingSegments = [l for l in image.get_layer_by_name(f"{feature['type']}[{game}]").get_children() if multipleSegmentsRegex.match(l.get_name())]
 
                 if missingOptions:
                     chosenLayer = random.choice(missingOptions)
@@ -253,7 +253,7 @@ def buildThumbnail(instance, structure):
             if image.get_layer_by_name(chosenLayerSegment):
                 print(f"\t\tFound Segment: {chosenLayerSegment}")
                 segmentLayer = image.get_layer_by_name(chosenLayerSegment).copy()
-                image.insert_layer(segmentLayer, featureGroup, len(featureGroup.list_children()))
+                image.insert_layer(segmentLayer, featureGroup, len(featureGroup.get_children()))
                 
                 if 'scale_algo' in feature:
                     if feature['scale_algo'] == 'pixel':
@@ -310,7 +310,7 @@ def buildThumbnail(instance, structure):
         # This would be better as it would create an editable text layer but it is currently broken.
         # taglineTextLayer = Gimp.TextLayer.new(image,
         #                                       instance['features']['tagline'][0],
-        #                                       Gimp.fonts_get_by_name("Bangers Regular")[0],
+        #                                       Gimp.Font.get_by_name("Bangers Regular"),
         #                                       96,
         #                                       image.get_unit())
 
@@ -327,7 +327,7 @@ def buildThumbnail(instance, structure):
                                           instance['features']['tagline'][0], 0,
                                           True,
                                           96,
-                                          Gimp.fonts_get_by_name("Bangers Regular")[0])  
+                                          Gimp.Font.get_by_name("Bangers Regular"))  
         Gimp.floating_sel_anchor(taglineTextLayer)
     else:
         print('\tTagline not found, skipping...')
@@ -342,12 +342,12 @@ def buildThumbnail(instance, structure):
 def createDropShadow(layer, offset_x, offset_y, blurRadius, shrink, color):
     print(f'\t\tAdding drop shadow to layer: {layer.get_name()}')
     
-    image = Gimp.list_images()[0]
+    image = Gimp.get_images()[0]
     
     # Get Parent & Position
     parent = layer.get_parent()
     childPosition = 0
-    for i, child in enumerate(parent.list_children()):
+    for i, child in enumerate(parent.get_children()):
         if child.get_name() == layer.get_name():
             childPosition = i
             break
@@ -421,7 +421,7 @@ def cropToContent(imageIn, layerIn):
     return result.index(0)
 
 def setVisibleAll(layerGroup):
-    for layer in layerGroup.list_children():
+    for layer in layerGroup.get_children():
         if layer.is_group():
             setVisibleAll(layer)
             layer.set_visible(True)
@@ -448,7 +448,7 @@ def getDataFromSheet(thumbsWorksheet):
 
     return thumbsToBuild
 
-def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
+def run(procedure, run_mode, image, layers, args, CONFIG):
     print("----- GENERATE THUMBNAILS -----")
     Gimp.context_push()
     image.undo_group_start()

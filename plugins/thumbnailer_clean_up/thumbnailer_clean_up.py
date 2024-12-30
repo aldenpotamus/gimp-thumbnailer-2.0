@@ -44,11 +44,11 @@ def _(message): return GLib.dgettext(None, message)
 import re
 def cleanLayerNames(image):
     gameAssetsGroup = image.get_layer_by_name('Game Assets')
-    for gameLayer in gameAssetsGroup.list_children():
+    for gameLayer in gameAssetsGroup.get_children():
         if gameLayer:
             gameLayer.set_name(gameLayer.get_name().lower())
             gameName = gameLayer.get_name()
-            for featTypeLayer in gameLayer.list_children():
+            for featTypeLayer in gameLayer.get_children():
                 featTypeLayer.set_name(featTypeLayer.get_name().lower())
                 if featTypeLayer:
                     typeName = re.sub("\[[^]]+\]", "", featTypeLayer.get_name()).lower()
@@ -57,7 +57,7 @@ def cleanLayerNames(image):
                         # Clean Filename Stuff
                         typeName = re.sub(" #[0-9]+$", "", re.sub(".png", "", re.sub("_", " ", typeName))).lower()
                         featTypeLayer.set_name(typeName+featTypeUnique)
-                    for featureLayer in featTypeLayer.list_children():
+                    for featureLayer in featTypeLayer.get_children():
                         featName = re.sub("\[[^]]+\]", "", featureLayer.get_name()).lower()
                         featureUnique = f"[{gameName.lower()}-{typeName.lower()}]"
                         if featureUnique not in featName:
@@ -68,7 +68,7 @@ def cleanLayerNames(image):
 ######### LAYER SIZE TO PARENT #########
 # Recursive Get Child Leaf Nodes
 def getChildLeafNodes(layerGroup, result):
-    for layer in layerGroup.list_children():
+    for layer in layerGroup.get_children():
         if layer.is_group():
             getChildLeafNodes(layer, result)
         else:
@@ -91,7 +91,7 @@ def cropToContent(imageIn, layerIn):
 
 # Correct Expansion and Visibility Issues With Assets
 def fixVisAndExpand(layerGroup):
-    for layer in layerGroup.list_children():
+    for layer in layerGroup.get_children():
         if layer.is_group():
             fixVisAndExpand(layer)
             layer.set_expanded(False)
@@ -101,8 +101,8 @@ def fixVisAndExpand(layerGroup):
 
 def layerSizeToParent(image):
     gameAssetsGroup = image.get_layer_by_name('Game Assets')
-    for gameLayer in gameAssetsGroup.list_children():
-        for featTypeLayer in gameLayer.list_children():
+    for gameLayer in gameAssetsGroup.get_children():
+        for featTypeLayer in gameLayer.get_children():
             if featTypeLayer:
                 (xMin, yMin) = (100000, 100000)
                 (xMax, yMax) = (-100000, -100000)
@@ -137,7 +137,7 @@ def layerSizeToParent(image):
                             featureLayer.resize(xMax-xMin, yMax-yMin, x-xMin, y-yMin)
     fixVisAndExpand(gameAssetsGroup)
 
-def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
+def run(procedure, run_mode, image, layers, args, CONFIG):
     print("----- CLEAN UP -----")
     Gimp.context_push()
     image.undo_group_start()

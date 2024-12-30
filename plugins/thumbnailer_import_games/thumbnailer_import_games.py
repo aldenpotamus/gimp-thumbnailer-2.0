@@ -57,7 +57,7 @@ def getDataFromSheet(thumbsWorksheet):
 
     return thumbsToBuild
 
-def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
+def run(procedure, run_mode, image, layers, args, CONFIG):
     print("----- IMPORT GAMES -----")
     
     print('\tConnecting to gSheets...')
@@ -87,15 +87,15 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
     image.undo_group_start()
 
     print('\tCreating Needed Layer Groups...')
-    gameAssets = Gimp.Layer.group_new(image)
+    gameAssets = Gimp.GroupLayer.new(image)
     gameAssets.set_name('Game Assets')
     image.insert_layer(gameAssets, None, 0)
 
-    generalLayerGroup = Gimp.Layer.group_new(image)
+    generalLayerGroup =  Gimp.GroupLayer.new(image)
     generalLayerGroup.set_name('_General')
     image.insert_layer(generalLayerGroup, None, 0)
 
-    generatedLayerGroup = Gimp.Layer.group_new(image)
+    generatedLayerGroup =  Gimp.GroupLayer.new(image)
     generatedLayerGroup.set_name('_Generated')
     image.insert_layer(generatedLayerGroup, None, 0)
 
@@ -116,7 +116,7 @@ def run(procedure, run_mode, image, n_layers, layers, args, CONFIG):
             # layer.set_name(layer.get_name().replace('_', ' ').replace('.xcf', ''))
             layer.set_expanded(False)
     
-            gameLayer = layer.list_children()[0]
+            gameLayer = layer.get_children()[0]
             image.reorder_item(gameLayer, gameAssets, 0)
             Gimp.Image.remove_layer(image, layer)
             Gimp.Layer.delete(layer)
