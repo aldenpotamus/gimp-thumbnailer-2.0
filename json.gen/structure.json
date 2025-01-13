@@ -1523,8 +1523,8 @@
         "selector": "ordered",
         "scale": 0.60,
         "rotate": 0,
-        "x_offset": 444,
-        "y_offset": 367,
+        "x_offset": 567,
+        "y_offset": 436,
         "z_index": "middle",
         "effects": [
           {
@@ -1539,8 +1539,8 @@
         "selector": "ordered",
         "scale": 0.60,
         "rotate": 0,
-        "x_offset": 899,
-        "y_offset": 324,
+        "x_offset": 980,
+        "y_offset": 398,
         "z_index": "middle",
         "effects": []
       },
