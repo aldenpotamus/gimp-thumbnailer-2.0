@@ -315,5 +315,24 @@
                 "options_limit": "strict"
             }
         }
+    },
+    "brotato": {
+        "features": {
+            "character": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "item": {
+                "type": "dropdown",
+                "num_selections": "many[3]",
+                "options_limit": "strict"
+            },
+            "weapon": {
+                "type": "dropdown",
+                "num_selections": "many[4]",
+                "options_limit": "strict"
+            }
+        }
     }
 }

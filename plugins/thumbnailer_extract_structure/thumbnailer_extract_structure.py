@@ -122,7 +122,7 @@ def run(procedure, run_mode, image, layers, args, CONFIG):
     image.undo_group_start()
 
     # Body of the Run Method
-    if n_layers == 1:
+    if len(layers) == 1:
         key, structureAddition = divineStucture(image, layers[0])
 
         print('\tBacking Up Current Structure...')

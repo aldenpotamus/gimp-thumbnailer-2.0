@@ -1514,5 +1514,101 @@
         "effects": []
       }
     ]
+  },
+  "brotato": {
+    "features": [
+      {
+        "id": "weapon0",
+        "type": "weapon",
+        "selector": "ordered",
+        "scale": 1,
+        "rotate": 0,
+        "x_offset": 444,
+        "y_offset": 367,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "weapon1",
+        "type": "weapon",
+        "selector": "ordered",
+        "scale": 1,
+        "rotate": 0,
+        "x_offset": 899,
+        "y_offset": 324,
+        "z_index": "middle",
+        "effects": [ 
+          {
+            "effect_name": "flip",
+            "axis": "horizontal"
+          }]
+      },
+      {
+        "id": "item0",
+        "type": "item",
+        "selector": "ordered",
+        "scale": 0.5,
+        "rotate": 0,
+        "x_offset": 610,
+        "y_offset": 214,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "item1",
+        "type": "item",
+        "selector": "ordered",
+        "scale": 0.5,
+        "rotate": 0,
+        "x_offset": 737,
+        "y_offset": 96,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "item2",
+        "type": "item",
+        "selector": "ordered",
+        "scale": 0.5,
+        "rotate": 0,
+        "x_offset": 899,
+        "y_offset": 142,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "character",
+        "type": "character",
+        "selector": "single",
+        "scale": 1,
+        "rotate": 0,
+        "x_offset": 702,
+        "y_offset": 283,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "logo",
+        "type": "logo",
+        "selector": "single-logo",
+        "scale": 1,
+        "rotate": 0,
+        "x_offset": 43,
+        "y_offset": 41,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "bg",
+        "type": "bg",
+        "selector": "single-bg",
+        "scale": 1.0,
+        "rotate": 0.0,
+        "x_offset": -5,
+        "y_offset": -110,
+        "z_index": "bottom",
+        "effects": []
+      }
+    ]
   }
 }
