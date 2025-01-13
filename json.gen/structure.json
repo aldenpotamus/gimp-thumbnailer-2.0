@@ -1521,27 +1521,28 @@
         "id": "weapon0",
         "type": "weapon",
         "selector": "ordered",
-        "scale": 1,
+        "scale": 0.60,
         "rotate": 0,
         "x_offset": 444,
         "y_offset": 367,
         "z_index": "middle",
-        "effects": []
+        "effects": [
+          {
+            "effect_name": "flip",
+            "axis": "horizontal"
+          }
+        ]
       },
       {
         "id": "weapon1",
         "type": "weapon",
         "selector": "ordered",
-        "scale": 1,
+        "scale": 0.60,
         "rotate": 0,
         "x_offset": 899,
         "y_offset": 324,
         "z_index": "middle",
-        "effects": [ 
-          {
-            "effect_name": "flip",
-            "axis": "horizontal"
-          }]
+        "effects": []
       },
       {
         "id": "item0",
