@@ -52,7 +52,7 @@ def exportImage(image, thumbToExport, CONFIG):
 
     outputPath = os.path.join(CONFIG['GENERAL']['outputDir'], thumbToExport['filename']+'.png')   
     file = Gio.File.new_for_path(outputPath)
-    Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, new_image, [layer], file)
+    Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, new_image, file)
     new_image.delete()
 
 def getDataFromSheet(thumbsWorksheet):

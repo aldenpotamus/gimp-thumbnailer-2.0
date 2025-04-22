@@ -99,7 +99,7 @@ def run(procedure, run_mode, image, layers, args, CONFIG):
     generatedLayerGroup.set_name('_Generated')
     image.insert_layer(generatedLayerGroup, None, 0)
 
-    print('\tImporting Univeral Thumbnail Elements...')
+    print('\tImporting Universal Thumbnail Elements...')
     file = Gio.File.new_for_path(os.path.join(CONFIG['PROJ']['dir'], 'img', 'general.xcf'))
     layersToAdd = Gimp.file_load_layers(1, image, file)
     for layer in layersToAdd:

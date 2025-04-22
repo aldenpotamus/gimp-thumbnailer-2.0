@@ -249,7 +249,6 @@ def buildThumbnail(instance, structure):
         i = 1
         while True:
             chosenLayerSegment = re.sub(r'^([^[]*)([^]]*])$', rf'\1({str(i)})\2', chosenLayer.get_name())
-            print(chosenLayerSegment)
             if image.get_layer_by_name(chosenLayerSegment):
                 print(f"\t\tFound Segment: {chosenLayerSegment}")
                 segmentLayer = image.get_layer_by_name(chosenLayerSegment).copy()
@@ -306,14 +305,6 @@ def buildThumbnail(instance, structure):
     
     if 'tagline' in instance['features']:
         print('\tTagline found, creating text layer...')
-        # Currently this causes a crash https://gitlab.gnome.org/GNOME/gimp/-/issues/8900#note_1850867
-        # This would be better as it would create an editable text layer but it is currently broken.
-        # taglineTextLayer = Gimp.TextLayer.new(image,
-        #                                       instance['features']['tagline'][0],
-        #                                       Gimp.Font.get_by_name("Bangers Regular"),
-        #                                       96,
-        #                                       image.get_unit())
-
         Gimp.context_set_foreground(white)
         taglineLayer = image.get_layer_by_name('empty_layer').copy()
         taglineLayer.set_visible(True)
@@ -327,8 +318,10 @@ def buildThumbnail(instance, structure):
                                           instance['features']['tagline'][0], 0,
                                           True,
                                           96,
-                                          Gimp.Font.get_by_name("Bangers Regular"))  
-        Gimp.floating_sel_anchor(taglineTextLayer)
+                                          Gimp.Font.get_by_name("Bangers Regular"))
+        taglineTextLayer.set_visible(True)
+        Gimp.floating_sel_to_layer(taglineTextLayer)
+        image.remove_layer(taglineLayer)
     else:
         print('\tTagline not found, skipping...')
 
@@ -383,22 +376,25 @@ def createDropShadow(layer, offset_x, offset_y, blurRadius, shrink, color):
     image.get_selection().none(image)
     
     # Blur Shadow
-    procedure = Gimp.get_pdb().lookup_procedure('plug-in-gauss')
-    config = procedure.create_config()
-    config.set_property('run-mode', Gimp.RunMode.NONINTERACTIVE)
-    config.set_property('image', image)
-    config.set_property('drawable', dropShadowLayer)
-    config.set_property('horizontal', blurRadius)
-    config.set_property('vertical', blurRadius)
-    config.set_property('method', 0)
-    result = procedure.run(config)
-    transformResult = dropShadowLayer.transform_2d(0,0,1,1,0,offset_x,offset_y)
+    filter = Gimp.DrawableFilter.new(dropShadowLayer, "gegl:gaussian-blur", "")
+    config = filter.get_config()
+    config.set_property("std-dev-x", blurRadius)
+    config.set_property("std-dev-y", blurRadius)
+    config.set_property("filter", "fir")
+    filter.update()
+    dropShadowLayer.append_filter(filter)
+
     cropToContent(image, dropShadowLayer)
+    dropShadowLayer.resize(dropShadowLayer.get_width() + blurRadius*8,
+                           dropShadowLayer.get_height() + blurRadius*8,
+                           blurRadius*4, blurRadius*4)
+    transformResult = dropShadowLayer.transform_2d(0,0,1,1,0,offset_x,offset_y)
 
 def colorizeLayer(layer, hue, saturation, lightness):
     print(f'\t\tColorizing layer: {layer.get_name()}')
     procedure = Gimp.get_pdb().lookup_procedure('gimp-drawable-colorize-hsl')
-    config = procedure.create_config(); config.set_property('drawable', layer)
+    config = Gimp.Procedure.create_config(procedure)
+    config.set_property('drawable', layer)
     config.set_property('hue', hue)
     config.set_property('saturation', saturation)
     config.set_property('lightness', lightness)
@@ -410,15 +406,9 @@ def cropToContent(imageIn, layerIn):
     imageIn.set_selected_layers([layerIn])
     visible = layerIn.get_visible()
     layerIn.set_visible(True)
-    # layerIn.resize_to_image_size()
-    procedure = Gimp.get_pdb().lookup_procedure('plug-in-autocrop-layer')
-    config = procedure.create_config()
-    config.set_property('run-mode', Gimp.RunMode.NONINTERACTIVE)
-    config.set_property('image', imageIn)
-    config.set_property('drawable', layerIn)
-    result = procedure.run(config)
+    result = Gimp.Image.autocrop_selected_layers(imageIn, layerIn)
     layerIn.set_visible(visible)
-    return result.index(0)
+    return result
 
 def setVisibleAll(layerGroup):
     for layer in layerGroup.get_children():
