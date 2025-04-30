@@ -79,15 +79,9 @@ def cropToContent(imageIn, layerIn):
     imageIn.set_selected_layers([layerIn])
     visible = layerIn.get_visible()
     layerIn.set_visible(True)
-    # layerIn.resize_to_image_size()
-    procedure = Gimp.get_pdb().lookup_procedure('plug-in-autocrop-layer')
-    config = procedure.create_config()
-    config.set_property('run-mode', Gimp.RunMode.NONINTERACTIVE)
-    config.set_property('image', imageIn)
-    config.set_property('drawable', layerIn)
-    result = procedure.run(config)
+    result = Gimp.Image.autocrop_selected_layers(imageIn, layerIn)
     layerIn.set_visible(visible)
-    return result.index(0)
+    return result
 
 # Correct Expansion and Visibility Issues With Assets
 def fixVisAndExpand(layerGroup):
