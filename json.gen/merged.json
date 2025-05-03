@@ -442,6 +442,7 @@
         "num_selections": "single",
         "options_limit": "strict",
         "options": [
+          "amberwald",
           "elderlicht",
           "gildenberg",
           "glenwald",
@@ -601,6 +602,7 @@
           "hunter",
           "hunter-elite",
           "kindled",
+          "kindled-elite",
           "lancer",
           "lancer-elite",
           "nessie egg",
@@ -625,6 +627,7 @@
         "options_limit": "strict",
         "options": [
           "1",
+          "18",
           "2",
           "3",
           "4",
