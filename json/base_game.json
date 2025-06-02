@@ -334,5 +334,34 @@
                 "options_limit": "strict"
             }
         }
+    },
+    "monster train 2": {
+        "features": {
+            "hero": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "main clan": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "secondary clan": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "pyre heart": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            },
+            "covenant": {
+                "type": "dropdown",
+                "num_selections": "single",
+                "options_limit": "strict"
+            }
+        }
     }
 }

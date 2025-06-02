@@ -1521,7 +1521,7 @@
         "id": "weapon0",
         "type": "weapon",
         "selector": "ordered",
-        "scale": 0.60,
+        "scale": 0.6,
         "rotate": 0,
         "x_offset": 567,
         "y_offset": 436,
@@ -1537,7 +1537,7 @@
         "id": "weapon1",
         "type": "weapon",
         "selector": "ordered",
-        "scale": 0.60,
+        "scale": 0.6,
         "rotate": 0,
         "x_offset": 980,
         "y_offset": 398,
@@ -1607,6 +1607,175 @@
         "rotate": 0.0,
         "x_offset": -5,
         "y_offset": -110,
+        "z_index": "bottom",
+        "effects": []
+      }
+    ]
+  },
+  "monster train 2": {
+    "features": [
+      {
+        "id": "hero",
+        "type": "hero",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": 659,
+        "y_offset": 42,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "pyre heart",
+        "type": "pyre heart",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": 301,
+        "y_offset": 416,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "covenant",
+        "type": "covenant",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": 202,
+        "y_offset": 435,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "main clan",
+        "type": "main clan",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": 74,
+        "y_offset": 461,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "logo",
+        "type": "logo",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -38,
+        "y_offset": -47,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "secondary clan",
+        "type": "secondary clan",
+        "selector": "single",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": 156,
+        "y_offset": 542,
+        "z_index": "middle",
+        "effects": []
+      },
+      {
+        "id": "bg0",
+        "type": "bg",
+        "selector": "single-cov_bg",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -237,
+        "y_offset": -261,
+        "z_index": "bottom",
+        "effects": []
+      },
+      {
+        "id": "bg1",
+        "type": "bg",
+        "selector": "single-fact_bg",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -237,
+        "y_offset": -261,
+        "z_index": "bottom",
+        "effects": []
+      },
+      {
+        "id": "bg2",
+        "type": "bg",
+        "selector": "single-heart_bg",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -237,
+        "y_offset": -261,
+        "z_index": "bottom",
+        "effects": []
+      },
+      {
+        "id": "bg3",
+        "type": "bg",
+        "selector": "single-fade_1",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -237,
+        "y_offset": -261,
+        "z_index": "bottom",
+        "effects": []
+      },
+      {
+        "id": "bg4",
+        "type": "bg",
+        "selector": "single-flame_1",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -237,
+        "y_offset": -261,
+        "z_index": "bottom",
+        "effects": []
+      },
+      {
+        "id": "bg5",
+        "type": "bg",
+        "selector": "single-flame_2",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -237,
+        "y_offset": -261,
+        "z_index": "bottom",
+        "effects": []
+      },
+      {
+        "id": "bg6",
+        "type": "bg",
+        "selector": "single-fade_2",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -237,
+        "y_offset": -261,
+        "z_index": "bottom",
+        "effects": []
+      },
+      {
+        "id": "bg7",
+        "type": "bg",
+        "selector": "single-boilerroom",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -237,
+        "y_offset": -261,
+        "z_index": "bottom",
+        "effects": []
+      },
+      {
+        "id": "bg8",
+        "type": "bg",
+        "selector": "single-back_fire",
+        "scale": 1.0,
+        "rotate": 0.00,
+        "x_offset": -237,
+        "y_offset": -261,
         "z_index": "bottom",
         "effects": []
       }

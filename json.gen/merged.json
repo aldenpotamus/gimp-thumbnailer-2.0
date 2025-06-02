@@ -2923,5 +2923,147 @@
         ]
       }
     }
+  },
+  "monster train 2": {
+    "features": {
+      "description": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,255}$"
+      },
+      "tagline": {
+        "type": "text",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "option_validate": "^.{0,30}$"
+      },
+      "success": {
+        "type": "dropdown",
+        "options": [
+          "win",
+          "loss",
+          "win (close)",
+          "loss (close)",
+          "rage quit"
+        ],
+        "num_selections": "single",
+        "options_limit": "strict"
+      },
+      "hero": {
+        "type": "dropdown",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "options": [
+          "arduhn",
+          "bulbous abomination",
+          "ekka no moon",
+          "executioner bolete",
+          "fel",
+          "fenix",
+          "hornbreaker prince",
+          "lady gilda",
+          "lil fade",
+          "madame lionsmane",
+          "orechi",
+          "penumbra",
+          "rector flicker",
+          "roots of wyldenten",
+          "shadow primordium",
+          "shardtail queen",
+          "solgard the martyr",
+          "talos",
+          "tethys titansbane",
+          "the sentient"
+        ]
+      },
+      "main clan": {
+        "type": "dropdown",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "options": [
+          "awoken",
+          "banished",
+          "hellhorned",
+          "lazarus league",
+          "luna coven",
+          "melting remnant",
+          "pyreborn",
+          "stygian guard",
+          "umbra",
+          "underlegion"
+        ]
+      },
+      "secondary clan": {
+        "type": "dropdown",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "options": [
+          "awoken",
+          "banished",
+          "hellhorned",
+          "lazarus league",
+          "luna coven",
+          "melting remnant",
+          "pyreborn",
+          "stygian guard",
+          "umbra",
+          "underlegion"
+        ]
+      },
+      "pyre heart": {
+        "type": "dropdown",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "options": [
+          "aquaths reservation",
+          "bogworm",
+          "dominion",
+          "echo of the timefather",
+          "entropy",
+          "fhyra greed",
+          "heart of the pact",
+          "herzals horde",
+          "lifemothers pyre",
+          "malickas shifting pyre",
+          "proto heartcage",
+          "savagery",
+          "wynghs spirit"
+        ]
+      },
+      "covenant": {
+        "type": "dropdown",
+        "num_selections": "single",
+        "options_limit": "strict",
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25"
+        ]
+      }
+    }
   }
 }
