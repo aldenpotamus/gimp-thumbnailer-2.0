@@ -1683,7 +1683,7 @@
       {
         "id": "bg0",
         "type": "bg",
-        "selector": "single-cov_bg",
+        "selector": "single-cov bg",
         "scale": 1.0,
         "rotate": 0.00,
         "x_offset": -237,
@@ -1694,7 +1694,7 @@
       {
         "id": "bg1",
         "type": "bg",
-        "selector": "single-fact_bg",
+        "selector": "single-fact bg",
         "scale": 1.0,
         "rotate": 0.00,
         "x_offset": -237,
@@ -1705,7 +1705,7 @@
       {
         "id": "bg2",
         "type": "bg",
-        "selector": "single-heart_bg",
+        "selector": "single-heart bg",
         "scale": 1.0,
         "rotate": 0.00,
         "x_offset": -237,
@@ -1716,7 +1716,7 @@
       {
         "id": "bg3",
         "type": "bg",
-        "selector": "single-fade_1",
+        "selector": "single-fade 1",
         "scale": 1.0,
         "rotate": 0.00,
         "x_offset": -237,
@@ -1727,7 +1727,7 @@
       {
         "id": "bg4",
         "type": "bg",
-        "selector": "single-flame_1",
+        "selector": "single-flame 1",
         "scale": 1.0,
         "rotate": 0.00,
         "x_offset": -237,
@@ -1738,7 +1738,7 @@
       {
         "id": "bg5",
         "type": "bg",
-        "selector": "single-flame_2",
+        "selector": "single-flame 2",
         "scale": 1.0,
         "rotate": 0.00,
         "x_offset": -237,
@@ -1749,7 +1749,7 @@
       {
         "id": "bg6",
         "type": "bg",
-        "selector": "single-fade_2",
+        "selector": "single-fade 2",
         "scale": 1.0,
         "rotate": 0.00,
         "x_offset": -237,
@@ -1771,7 +1771,7 @@
       {
         "id": "bg8",
         "type": "bg",
-        "selector": "single-back_fire",
+        "selector": "single-back fire",
         "scale": 1.0,
         "rotate": 0.00,
         "x_offset": -237,
