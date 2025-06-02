@@ -1683,7 +1683,7 @@
       {
         "id": "bg0",
         "type": "bg",
-        "selector": "single-cov bg",
+        "selector": "single-covn bg",
         "scale": 1.0,
         "rotate": 0.00,
         "x_offset": -237,
